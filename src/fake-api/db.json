@@ -1,0 +1,249 @@
+{
+  "users": [
+    {
+      "fullName": "admin",
+      "userName": "admin",
+      "email": "admin@mail.com",
+      "password": "12345",
+      "role": "admin",
+      "deliveryList": [
+        {
+          "id": 1,
+          "recipientName": "Asep",
+          "address": "Kp. Daya Mekar RT 02 RW 03 Desa Cikalong Kec. Cikalong Wetan Kab. Bandung Barat",
+          "postalCode": 40336,
+          "handphone": 810280821
+        },
+        {
+          "id": 2,
+          "recipientName": "Rudi",
+          "address": "Kp. Cibeunying ujung berung",
+          "postalCode": 57654,
+          "handphone": 810280821
+        }
+      ],
+      "id": 1
+    }
+  ],
+  "transactions": [
+    {
+      "userId": 6,
+      "recipientName": "Rudi",
+      "address": "Kp. Cibeunying ujung berung",
+      "postalCode": 57654,
+      "handphone": 810280821,
+      "courier": "siGercep",
+      "totalPrice": 157500,
+      "totalPayment": 200000,
+      "transactionDate": "10 - 1 - 2022",
+      "transactionItems": [
+        {
+          "userId": 6,
+          "productId": 13,
+          "productName": "Hijab coklat",
+          "price": 50000,
+          "productImage": "https://dynamic.zacdn.com/WimYSdPrkfy4GS0No22_x2or3OM=/fit-in/236x345/filters:quality(90):fill(ffffff)/https://static-id.zacdn.com/p/bodypack-0154-5451903-2.jpg",
+          "quantity": 3,
+          "totalPrice": 4444,
+          "id": 1
+        }
+      ],
+      "id": 1
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "productName": "Hijab Hijau Tua",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog21_400x.jpg?v=1641531665",
+      "description": "ini barang bagus loh gak ada duanya",
+      "category": "polos"
+    },
+    {
+      "id": 2,
+      "productName": "Hijab Hijau",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog17_400x.jpg?v=1641532033",
+      "description": "ini barang bagus banget loh",
+      "category": "polos"
+    },
+    {
+      "id": 3,
+      "productName": "Hijab Hijau Muda",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog15_400x.jpg?v=1641531601",
+      "description": "ini barang keren abis",
+      "category": "polos"
+    },
+    {
+      "id": 4,
+      "productName": "Hijab Kuning",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog12_400x.jpg?v=1641531486",
+      "description": "ini barang elegant",
+      "category": "polos"
+    },
+    {
+      "id": 5,
+      "productName": "Hijab Kuning Muda",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog9_400x.jpg?v=1641531419",
+      "description": "ini barang cute banget loh",
+      "category": "polos"
+    },
+    {
+      "id": 6,
+      "productName": "Hijab Abu Muda",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog3_400x.jpg?v=1641531385",
+      "description": "ini barang cute banget loh",
+      "category": "polos"
+    },
+    {
+      "id": 7,
+      "productName": "Hijab Merah Muda",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Salmon-S2_400x.jpg?v=1640050876",
+      "description": "ini barang cute banget loh",
+      "category": "polos"
+    },
+    {
+      "id": 8,
+      "productName": "Hijab Ungu",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Peach-Pearl-S_400x.jpg?v=1640055530",
+      "description": "ini barang cute banget loh",
+      "category": "polos"
+    },
+    {
+      "id": 9,
+      "productName": "Hijab Coklat",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Mahogani2_400x.jpg?v=1635481601",
+      "description": "ini barang cute banget loh",
+      "category": "polos"
+    },
+    {
+      "id": 10,
+      "productName": "Hijab Oren",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Dessert-Sun3_400x.jpg?v=1634869429",
+      "description": "ini barang cute banget loh",
+      "category": "polos"
+    },
+    {
+      "id": 11,
+      "productName": "Hijab Merah",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Cayenne-S23_400x.jpg?v=1640050407",
+      "description": "ini barang cute banget loh",
+      "category": "polos"
+    },
+    {
+      "id": 12,
+      "productName": "Hijab Ungu Tua",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/London-Bridge3_400x.jpg?v=1634809629",
+      "description": "ini barang cute banget loh",
+      "category": "polos"
+    },
+    {
+      "id": 12,
+      "productName": "Hijab Merah Tua",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Barn-red4_400x.jpg?v=1641789163",
+      "description": "ini barang cute banget loh",
+      "category": "polos"
+    },
+    {
+      "id": 13,
+      "productName": "Hijab Merah Muda Motif Kotak",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Snow-White_1_400x.jpg?v=1637756024",
+      "description": "ini barang cute banget loh",
+      "category": "motif"
+    },
+    {
+      "id": 14,
+      "productName": "Hijab Kuning Motif Daun Gradasi",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/11258_400x.jpg?v=1600502870",
+      "description": "ini barang cute banget loh",
+      "category": "motif"
+    },
+    {
+      "id": 15,
+      "productName": "Hijab Ungu Motif Daun",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/WhatsAppImage2020-07-12at08.50.08_400x.jpg?v=1594979968",
+      "description": "ini barang cute banget loh",
+      "category": "motif"
+    },
+    {
+      "id": 16,
+      "productName": "Hijab Merah Motif Bunga",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/11251_400x.jpg?v=1600334594",
+      "description": "ini barang cute banget loh",
+      "category": "motif"
+    },
+    {
+      "id": 17,
+      "productName": "Hijab Merah Motif Garis",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/116_400x.jpg?v=1575858989",
+      "description": "ini barang cute banget loh",
+      "category": "motif"
+    },
+    {
+      "id": 18,
+      "productName": "Hijab Hita Motif Kotak",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Marin-Black2_400x.jpg?v=1634893770",
+      "description": "ini barang cute banget loh",
+      "category": "motif"
+    },
+    {
+      "id": 19,
+      "productName": "Hijab Kuning Zahra",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/11258_400x.jpg?v=1600502870",
+      "description": "ini barang cute banget loh",
+      "category": "syar'i"
+    },
+    {
+      "id": 20,
+      "productName": "Hijab Kuning Aksara",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/106_400x.jpg?v=1575817274",
+      "description": "ini barang cute banget loh",
+      "category": "syar'i"
+    }
+  ],
+  "carts": [
+    {
+      "userId": 6,
+      "productId": 13,
+      "productName": "Hijab coklat",
+      "price": 50000,
+      "productImage": "https://dynamic.zacdn.com/WimYSdPrkfy4GS0No22_x2or3OM=/fit-in/236x345/filters:quality(90):fill(ffffff)/https://static-id.zacdn.com/p/bodypack-0154-5451903-2.jpg",
+      "quantity": 3,
+      "id": 1
+    }
+  ],
+  "courier": [
+    {
+      "id": 1,
+      "courierName": "SiGercep"
+    },
+    {
+      "id": 2,
+      "courierName": "SiLola"
+    },
+    {
+      "id": 3,
+      "courierName": "SiApah"
+    }
+  ]
+}

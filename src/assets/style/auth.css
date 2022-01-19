@@ -1,0 +1,52 @@
+.page-style {
+  background-color: rgb(227, 229, 248);
+  padding-top: 100px !important;
+  height: 100vh;
+}
+.box-auth {
+  border-radius: 10px;
+  background-color: white;
+}
+.r-box {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: white;
+}
+.r-box .ico-desc {
+  width: 100%;
+  margin-left: 20px;
+}
+.r-box .r-title {
+  width: 80%;
+  margin-top: 10px !important;
+  /* margin: auto; */
+}
+
+.title-login h4 {
+  margin-bottom: 5px;
+}
+.title-login span {
+  color: rgb(133, 133, 133);
+}
+
+.formgroup {
+  position: relative;
+}
+.formgroup input {
+  padding-left: 40px !important;
+  color: rgb(146, 146, 146);
+  font-size: 13px;
+}
+.icon-input {
+  position: absolute;
+  top: 7px;
+  left: 10px;
+}
+.icon-input-r {
+  position: absolute;
+  top: 7px;
+  right: 10px;
+}
+.icon-input-r:hover {
+  cursor: pointer;
+}
