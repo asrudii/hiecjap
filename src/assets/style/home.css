@@ -1,0 +1,36 @@
+.add-cart {
+  background-color: black;
+  opacity: 0.5;
+  color: white;
+  padding: 10px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  transition: ease-in-out 0.3s;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-cart > svg {
+  margin-left: 10px;
+}
+.add-cart:hover {
+  opacity: 0.6;
+}
+.pic-box {
+  position: relative;
+}
+.price {
+  color: rgb(211, 151, 39);
+}
+.prod-name {
+  font-size: 17px;
+  margin-bottom: 0px;
+}
+.desc {
+  font-size: 14px;
+  color: rgb(104, 104, 104);
+  margin-bottom: 5px;
+}

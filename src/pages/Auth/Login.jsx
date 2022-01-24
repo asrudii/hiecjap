@@ -60,7 +60,7 @@ class Login extends React.Component {
                 <input
                   placeholder="masukkan password"
                   type={this.state.togglePsw ? "password" : "text"}
-                  class="form-control"
+                  class="form-control input-pwd"
                 />
               </div>
               <button className="btn btn-primary">Masuk</button>
@@ -72,15 +72,21 @@ class Login extends React.Component {
               </div>
             </div>
           </div>
-          <div className="col-6 bg-primary py-5 r-box px-3 d-flex flex-column align-items-center">
+          <div className="col-6 bg-primary py-5 ps-lg-5 ps-md-4 r-box px-3 d-flex flex-column justify-content-center">
             <div className="ico-desc">
-              <FiFastForward size={80} />
+              <img
+                src={require("../../assets/img/logowhite.png")}
+                width={200}
+              />
             </div>
             <div className="r-title">
               <h1>
                 Mari Belanja di <strong>hiecjap</strong>
               </h1>
             </div>
+            <p className="r-desc">
+              "Fashion muslim murah, terkini, dan berkualitas"
+            </p>
           </div>
         </div>
       </div>
