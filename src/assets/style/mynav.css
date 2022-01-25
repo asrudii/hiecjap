@@ -1,5 +1,11 @@
-.nav-icon > svg:hover {
+.nav-icon > svg:hover,
+.nav-icon > div > svg:hover {
   cursor: pointer;
+}
+.nav-icon > a {
+  color: inherit;
+  margin-left: 20px;
+  font-size: 17px;
 }
 .search-bar {
   border-top: 1px solid #ddd;

@@ -10,10 +10,16 @@ import {
   FiCreditCard,
   FiEyeOff,
 } from "react-icons/fi";
+import { registerUser } from "../../redux/actions/user";
+import { connect } from "react-redux";
 
 class Register extends React.Component {
   state = {
     togglePsw: true,
+    fullName: "",
+    userName: "",
+    email: "",
+    password: "",
   };
 
   handTogglePsw = () => {
@@ -21,6 +27,23 @@ class Register extends React.Component {
       togglePsw: !this.state.togglePsw,
     });
   };
+
+  handInput = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  handReg = () => {
+    if (!this.state.userName || !this.state.email || !this.state.password) {
+      alert("data email, userName, dan password harus diisi");
+    } else {
+      this.props.registerUser(this.state);
+    }
+  };
+
   render() {
     return (
       <div className="container-fluid page-style">
@@ -38,7 +61,9 @@ class Register extends React.Component {
                   color="rgb(146, 146, 146)"
                 />
                 <input
+                  onChange={this.handInput}
                   placeholder="masukkan nama lengkap"
+                  name="fullName"
                   type="text"
                   class="form-control"
                 />
@@ -50,7 +75,9 @@ class Register extends React.Component {
                   color="rgb(146, 146, 146)"
                 />
                 <input
-                  placeholder="masukkan username"
+                  onChange={this.handInput}
+                  placeholder="masukkan userName"
+                  name="userName"
                   type="text"
                   class="form-control"
                 />
@@ -62,7 +89,9 @@ class Register extends React.Component {
                   color="rgb(146, 146, 146)"
                 />
                 <input
+                  onChange={this.handInput}
                   placeholder="masukkan email"
+                  name="email"
                   type="email"
                   class="form-control"
                 />
@@ -89,12 +118,16 @@ class Register extends React.Component {
                   />
                 )}
                 <input
+                  onChange={this.handInput}
                   placeholder="masukkan password"
+                  name="password"
                   type={this.state.togglePsw ? "password" : "text"}
                   class="form-control input-pwd"
                 />
               </div>
-              <button className="btn btn-primary">Daftar</button>
+              <button className="btn btn-primary" onClick={this.handReg}>
+                Daftar
+              </button>
               <div>
                 <span>Sudah punya akun? </span>
                 <span>
@@ -125,4 +158,12 @@ class Register extends React.Component {
   }
 }
 
-export default Register;
+const mapStateToProps = () => {
+  return {};
+};
+
+const mapDispatchToProps = {
+  registerUser,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

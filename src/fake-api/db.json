@@ -23,6 +23,15 @@
         }
       ],
       "id": 1
+    },
+    {
+      "fullName": "roni",
+      "userName": "roni12",
+      "email": "roni@mail.com",
+      "password": "12345",
+      "role": "user",
+      "deliveryList": [],
+      "id": 2
     }
   ],
   "transactions": [

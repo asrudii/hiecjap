@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "../assets/style/mynav.css";
 import { Link } from "react-router-dom";
 import { FiSearch, FiUser, FiShoppingCart, FiX } from "react-icons/fi";
+import { connect } from "react-redux";
+import { logOut } from "../redux/actions/user";
 
 class MyNav extends Component {
   state = {};
@@ -51,14 +53,58 @@ class MyNav extends Component {
                 </li>
               </ul>
             </div>
-            <div class="d-flex flex-row align-items-center justify-content-around col-2 nav-icon">
-              <div className="col-4">
-                <span>Hi, user</span>
+            {this.props.userGlobal.id ? (
+              <div class="d-flex flex-row align-items-center justify-content-around col-2 nav-icon">
+                <div className="col-4">
+                  <span>Hi, {this.props.userGlobal.userName}</span>
+                </div>
+                <div class="dropdown">
+                  <FiUser
+                    size={25}
+                    id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  />
+                  <ul
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton1"
+                  >
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        History
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        Admin
+                      </a>
+                    </li>
+                    <li>
+                      <hr class="dropdown-divider" />
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                        onClick={this.props.logOut}
+                      >
+                        LogOut
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <FiSearch
+                  size={25}
+                  onClick={() => this.handSearchBtn("show")}
+                />
+                <FiShoppingCart size={25} />
               </div>
-              <FiUser size={25} />
-              <FiSearch size={25} onClick={() => this.handSearchBtn("show")} />
-              <FiShoppingCart size={25} />
-            </div>
+            ) : (
+              <div class="d-flex flex-row align-items-center justify-content-end col-2 nav-icon">
+                <Link to="/login">Login</Link>
+                <Link to="/register">Register</Link>
+              </div>
+            )}
           </div>
         </div>
         <div
@@ -78,4 +124,14 @@ class MyNav extends Component {
   }
 }
 
-export default MyNav;
+const mapStateToProps = (state) => {
+  return {
+    userGlobal: state.userReducer,
+  };
+};
+
+const mapDispatchToProps = {
+  logOut,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyNav);
