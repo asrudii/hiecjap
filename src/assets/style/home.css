@@ -29,6 +29,10 @@
   font-size: 17px;
   margin-bottom: 0px;
 }
+.prod-name > a {
+  color: inherit;
+  text-decoration: none;
+}
 .desc {
   font-size: 14px;
   color: rgb(104, 104, 104);

@@ -6,6 +6,7 @@ const init_state = {
   id: 0,
   errMsg: "",
   deliveryList: [],
+  storageIsChecked: false,
 };
 
 const reducer = (state = init_state, action) => {
@@ -14,6 +15,8 @@ const reducer = (state = init_state, action) => {
       return { ...state, ...action.payload };
     case "ERROR_LOGIN":
       return { ...state, errMsg: action.payload };
+    case "CHECK_STORAGE":
+      return { ...state, storageIsChecked: true };
     case "LOG_OUT":
       return { ...init_state };
     default:

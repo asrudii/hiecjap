@@ -32,22 +32,26 @@ class MyNav extends Component {
             <div className="col-10 d-flex ">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0 m-auto">
                 <li class="nav-item">
-                  <a class="nav-link" href="#">
+                  <a class="nav-link" href="/product/syar'i">
                     HIJAB SYAR'I
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">
+                  <a class="nav-link" href="/product/polos">
                     HIJAB POLOS
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">
+                  <a class="nav-link" href="/product/motif">
                     HIJAB MOTIF
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#">
+                  <a
+                    class="nav-link"
+                    aria-current="page"
+                    href="/product/aksesoris"
+                  >
                     AKSESORIS
                   </a>
                 </li>
@@ -93,10 +97,10 @@ class MyNav extends Component {
                     </li>
                   </ul>
                 </div>
-                <FiSearch
+                {/* <FiSearch
                   size={25}
                   onClick={() => this.handSearchBtn("show")}
-                />
+                /> */}
                 <FiShoppingCart size={25} />
               </div>
             ) : (
@@ -107,7 +111,7 @@ class MyNav extends Component {
             )}
           </div>
         </div>
-        <div
+        {/* <div
           className="col-12 p-3 px-3 pt-4 search-bar align-items-center"
           id="searchbar"
         >
@@ -118,7 +122,7 @@ class MyNav extends Component {
             className="close-search"
             onClick={() => this.handSearchBtn("close")}
           />
-        </div>
+        </div> */}
       </nav>
     );
   }

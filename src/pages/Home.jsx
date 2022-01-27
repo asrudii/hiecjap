@@ -1,8 +1,138 @@
 import React from "react";
 import "../assets/style/home.css";
-import { FiShoppingCart } from "react-icons/fi";
+import Axios from "axios";
+import { API_URL } from "../endpoint/API";
+import CardProduct from "../components/CardProduct";
+import { connect } from "react-redux";
 
 class Home extends React.Component {
+  state = {
+    productList: [],
+    pageActive: 1,
+    maxPage: 0,
+    itemPerPage: 6,
+    filterProduct: [],
+    sortProduct: "",
+  };
+  componentDidMount() {
+    if (this.props.match.params.category) {
+      console.log(this.props.match.params.category);
+      Axios.get(`${API_URL}/products`, {
+        params: {
+          category: this.props.match.params.category,
+        },
+      })
+        .then((res) => {
+          this.setState({
+            productList: res.data,
+            maxPage: Math.ceil(res.data.length / this.state.itemPerPage),
+            filterProduct: res.data,
+          });
+        })
+        .catch((err) => {
+          alert("terjadi masalah pada server");
+        });
+    } else {
+      Axios.get(`${API_URL}/products`)
+        .then((res) => {
+          this.setState({
+            productList: res.data,
+            maxPage: Math.ceil(res.data.length / this.state.itemPerPage),
+            filterProduct: res.data,
+          });
+        })
+        .catch((err) => {
+          alert("terjadi masalah pada server");
+        });
+    }
+  }
+
+  renderProduct = () => {
+    let rawData = this.state.filterProduct;
+    // declare beginning index & last index for render product
+    const beginningIndex = (this.state.pageActive - 1) * this.state.itemPerPage;
+    const lastIndex = beginningIndex + this.state.itemPerPage;
+
+    // compare string
+    const compareString = (a, b) => {
+      if (a.productName > b.productName) {
+        return -1;
+      } else if (a.productName < b.productName) {
+        return 1;
+      } else {
+        return 0;
+      }
+    };
+
+    // sortData
+    switch (this.state.sortProduct) {
+      case "Lowest Price":
+        rawData.sort((a, b) => a.price - b.price);
+        break;
+      case "Highest Price":
+        rawData.sort((a, b) => b.price - a.price);
+        break;
+      case "A-Z":
+        rawData.sort((a, b) => compareString(b, a));
+        break;
+      case "Z-A":
+        rawData.sort(compareString);
+        break;
+      default:
+        rawData = [...this.state.filterProduct];
+        break;
+    }
+
+    const currentData = rawData.slice(beginningIndex, lastIndex);
+    return currentData.map((item) => {
+      return <CardProduct data={item} />;
+    });
+  };
+
+  nextPage = () => {
+    if (this.state.pageActive < this.state.maxPage)
+      this.setState({
+        pageActive: this.state.pageActive + 1,
+      });
+  };
+
+  prevPage = () => {
+    if (this.state.pageActive > 1) {
+      this.setState({
+        pageActive: this.state.pageActive - 1,
+      });
+    }
+  };
+
+  inputHand = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  searchProduct = (e) => {
+    let productName = this.productName.value;
+    let category = this.category.value;
+    if (category === "Pilih Kategori") {
+      category = "";
+    }
+
+    const filterProduct = this.state.productList.filter((item) => {
+      return (
+        item.productName.toLowerCase().includes(productName.toLowerCase()) &&
+        item.category.toLowerCase().includes(category.toLowerCase())
+      );
+    });
+
+    this.setState({
+      filterProduct,
+      maxPage: Math.ceil(filterProduct.length / this.state.itemPerPage),
+      pageActive: 1,
+    });
+  };
+
   render() {
     return (
       <div className="container-fluid page-style">
@@ -19,11 +149,16 @@ class Home extends React.Component {
                     type="text"
                     id="product-name"
                     placeholder="masukkan nama produk"
+                    ref={(el) => (this.productName = el)}
                   />
                 </div>
                 <div>
                   <label for="product-cath">Kategori Produk</label>
-                  <select class="form-control form-control" id="product-cath">
+                  <select
+                    class="form-control form-control"
+                    id="product-cath"
+                    ref={(el) => (this.category = el)}
+                  >
                     <option>Pilih Kategori</option>
                     <option>Syar'i</option>
                     <option>Polos</option>
@@ -31,7 +166,12 @@ class Home extends React.Component {
                     <option>Aksesoris</option>
                   </select>
                 </div>
-                <button className="btn btn-primary">Cari Produk</button>
+                <button
+                  className="btn btn-primary"
+                  onClick={this.searchProduct}
+                >
+                  Cari Produk
+                </button>
               </div>
             </div>
             <div class="card">
@@ -39,7 +179,12 @@ class Home extends React.Component {
               <div class="card-body d-grid gap-3">
                 <div>
                   <label for="product-sort">Urutkan Berdasarkan</label>
-                  <select class="form-control form-control" id="product-sort">
+                  <select
+                    class="form-control form-control"
+                    id="product-sort"
+                    name="sortProduct"
+                    onChange={this.inputHand}
+                  >
                     <option>Default</option>
                     <option>Lowest Price</option>
                     <option>Highest Price</option>
@@ -47,35 +192,33 @@ class Home extends React.Component {
                     <option>Z-A</option>
                   </select>
                 </div>
-                <button className="btn btn-primary">Urutkan Produk</button>
               </div>
             </div>
             <div className="mt-3 col-12 d-flex justify-content-around align-items-center">
-              <button className="btn btn-secondary"> Prev </button>
-              <span>1 of 3</span>
-              <button className="btn btn-secondary"> Next </button>
+              <button
+                disabled={this.state.pageActive === 1}
+                className="btn btn-secondary"
+                onClick={this.prevPage}
+              >
+                Prev
+              </button>
+              <span>
+                {this.state.pageActive} of {this.state.maxPage}
+              </span>
+              <button
+                disabled={this.state.pageActive === this.state.maxPage}
+                className="btn btn-secondary"
+                onClick={this.nextPage}
+              >
+                Next
+              </button>
             </div>
           </div>
           {/* product section */}
           <div className="col-8">
             <div className="d-flex flex-wrap">
-              <div className="card m-3" style={{ width: "18rem" }}>
-                <div className="pic-box">
-                  <img
-                    className="card-img-top"
-                    src="https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog21_400x.jpg?v=1641531665"
-                    alt="Card image cap"
-                  />
-                  <button className="add-cart">
-                    add to cart <FiShoppingCart />
-                  </button>
-                </div>
-                <div className="card-body">
-                  <h6 className="prod-name">Hijab Hijau Tua Polos</h6>
-                  <p className="desc">produk baru bahan bagus</p>
-                  <p className="card-text price">Rp. 20.000</p>
-                </div>
-              </div>
+              {/* product item */}
+              {this.renderProduct()}
             </div>
           </div>
         </div>
@@ -84,4 +227,9 @@ class Home extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    filterCategory: state.filterCategory,
+  };
+};
 export default Home;

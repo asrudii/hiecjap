@@ -1,0 +1,30 @@
+.product-info {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px rgb(187, 187, 187);
+}
+
+.product-info p {
+  font-size: 20px;
+}
+.product-info span {
+  font-size: 30px;
+}
+
+.numb-cart > input {
+  text-align: center;
+  width: 70px;
+  border: none;
+  height: 50px;
+}
+
+.numb-cart > input:focus {
+  outline: none;
+}
+.numb-cart > button {
+  text-align: center;
+  font-size: 22px;
+  width: 40px;
+  background: white;
+  border: none;
+}

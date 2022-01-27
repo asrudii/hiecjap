@@ -39,7 +39,7 @@ class Login extends React.Component {
       return <Redirect to="/" />;
     }
     return (
-      <div className="container-fluid page-style">
+      <div className="container-fluid page-style-auth">
         <div className="col-6 m-auto ps-1 box-auth row">
           <div className="col-6 py-5 text-center">
             <div className="title-login">

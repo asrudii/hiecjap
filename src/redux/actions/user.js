@@ -59,9 +59,37 @@ export const loginUser = ({ email, password }) => {
 };
 
 export const logOut = () => {
+  localStorage.removeItem("userDataEmerce");
   return (dispatch) => {
     dispatch({
       type: "LOG_OUT",
     });
+  };
+};
+
+export const keepLoginUser = (userData) => {
+  return (dispatch) => {
+    Axios.get(`${API_URL}/users`, {
+      params: {
+        id: userData.id,
+      },
+    })
+      .then((res) => {
+        delete res.data[0].password;
+        localStorage.setItem("userData", JSON.stringify(res.data[0]));
+        dispatch({
+          type: "AUTH_USER",
+          payload: res.data[0],
+        });
+      })
+      .catch((err) => {
+        alert("terjadi kesalahan pada server");
+      });
+  };
+};
+
+export const checkStorage = () => {
+  return {
+    type: "CHECK_STORAGE",
   };
 };

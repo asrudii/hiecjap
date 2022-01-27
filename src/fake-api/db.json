@@ -26,7 +26,7 @@
     },
     {
       "fullName": "roni",
-      "userName": "roni12",
+      "userName": "roni23",
       "email": "roni@mail.com",
       "password": "12345",
       "role": "user",
@@ -64,7 +64,7 @@
     {
       "id": 1,
       "productName": "Hijab Hijau Tua",
-      "price": 25000,
+      "price": 15000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog21_400x.jpg?v=1641531665",
       "description": "ini barang bagus loh gak ada duanya",
       "category": "polos"
@@ -80,7 +80,7 @@
     {
       "id": 3,
       "productName": "Hijab Hijau Muda",
-      "price": 25000,
+      "price": 15000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog15_400x.jpg?v=1641531601",
       "description": "ini barang keren abis",
       "category": "polos"
@@ -88,7 +88,7 @@
     {
       "id": 4,
       "productName": "Hijab Kuning",
-      "price": 25000,
+      "price": 35000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog12_400x.jpg?v=1641531486",
       "description": "ini barang elegant",
       "category": "polos"
@@ -96,7 +96,7 @@
     {
       "id": 5,
       "productName": "Hijab Kuning Muda",
-      "price": 25000,
+      "price": 20000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog9_400x.jpg?v=1641531419",
       "description": "ini barang cute banget loh",
       "category": "polos"
@@ -104,7 +104,7 @@
     {
       "id": 6,
       "productName": "Hijab Abu Muda",
-      "price": 25000,
+      "price": 15000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog3_400x.jpg?v=1641531385",
       "description": "ini barang cute banget loh",
       "category": "polos"
@@ -120,7 +120,7 @@
     {
       "id": 8,
       "productName": "Hijab Ungu",
-      "price": 25000,
+      "price": 35000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Peach-Pearl-S_400x.jpg?v=1640055530",
       "description": "ini barang cute banget loh",
       "category": "polos"
@@ -128,7 +128,7 @@
     {
       "id": 9,
       "productName": "Hijab Coklat",
-      "price": 25000,
+      "price": 35000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Mahogani2_400x.jpg?v=1635481601",
       "description": "ini barang cute banget loh",
       "category": "polos"
@@ -136,7 +136,7 @@
     {
       "id": 10,
       "productName": "Hijab Oren",
-      "price": 25000,
+      "price": 30000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Dessert-Sun3_400x.jpg?v=1634869429",
       "description": "ini barang cute banget loh",
       "category": "polos"
@@ -144,7 +144,7 @@
     {
       "id": 11,
       "productName": "Hijab Merah",
-      "price": 25000,
+      "price": 30000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Cayenne-S23_400x.jpg?v=1640050407",
       "description": "ini barang cute banget loh",
       "category": "polos"
@@ -152,7 +152,7 @@
     {
       "id": 12,
       "productName": "Hijab Ungu Tua",
-      "price": 25000,
+      "price": 30000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/London-Bridge3_400x.jpg?v=1634809629",
       "description": "ini barang cute banget loh",
       "category": "polos"
@@ -160,7 +160,7 @@
     {
       "id": 12,
       "productName": "Hijab Merah Tua",
-      "price": 25000,
+      "price": 40000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Barn-red4_400x.jpg?v=1641789163",
       "description": "ini barang cute banget loh",
       "category": "polos"
@@ -168,7 +168,7 @@
     {
       "id": 13,
       "productName": "Hijab Merah Muda Motif Kotak",
-      "price": 25000,
+      "price": 40000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Snow-White_1_400x.jpg?v=1637756024",
       "description": "ini barang cute banget loh",
       "category": "motif"
@@ -176,7 +176,7 @@
     {
       "id": 14,
       "productName": "Hijab Kuning Motif Daun Gradasi",
-      "price": 25000,
+      "price": 40000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/11258_400x.jpg?v=1600502870",
       "description": "ini barang cute banget loh",
       "category": "motif"
@@ -184,7 +184,7 @@
     {
       "id": 15,
       "productName": "Hijab Ungu Motif Daun",
-      "price": 25000,
+      "price": 40000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/WhatsAppImage2020-07-12at08.50.08_400x.jpg?v=1594979968",
       "description": "ini barang cute banget loh",
       "category": "motif"
@@ -192,7 +192,7 @@
     {
       "id": 16,
       "productName": "Hijab Merah Motif Bunga",
-      "price": 25000,
+      "price": 45000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/11251_400x.jpg?v=1600334594",
       "description": "ini barang cute banget loh",
       "category": "motif"
@@ -200,7 +200,7 @@
     {
       "id": 17,
       "productName": "Hijab Merah Motif Garis",
-      "price": 25000,
+      "price": 45000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/116_400x.jpg?v=1575858989",
       "description": "ini barang cute banget loh",
       "category": "motif"
@@ -208,7 +208,7 @@
     {
       "id": 18,
       "productName": "Hijab Hita Motif Kotak",
-      "price": 25000,
+      "price": 45000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Marin-Black2_400x.jpg?v=1634893770",
       "description": "ini barang cute banget loh",
       "category": "motif"
@@ -216,7 +216,7 @@
     {
       "id": 19,
       "productName": "Hijab Kuning Zahra",
-      "price": 25000,
+      "price": 50000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/11258_400x.jpg?v=1600502870",
       "description": "ini barang cute banget loh",
       "category": "syar'i"
@@ -224,7 +224,7 @@
     {
       "id": 20,
       "productName": "Hijab Kuning Aksara",
-      "price": 25000,
+      "price": 50000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/106_400x.jpg?v=1575817274",
       "description": "ini barang cute banget loh",
       "category": "syar'i"
@@ -239,6 +239,24 @@
       "productImage": "https://dynamic.zacdn.com/WimYSdPrkfy4GS0No22_x2or3OM=/fit-in/236x345/filters:quality(90):fill(ffffff)/https://static-id.zacdn.com/p/bodypack-0154-5451903-2.jpg",
       "quantity": 3,
       "id": 1
+    },
+    {
+      "userId": 0,
+      "productId": 2,
+      "productName": "Hijab Hijau",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog17_400x.jpg?v=1641532033",
+      "quantity": 4,
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "productId": 3,
+      "productName": "Hijab Hijau Muda",
+      "price": 15000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog15_400x.jpg?v=1641531601",
+      "quantity": 4,
+      "id": 3
     }
   ],
   "courier": [
