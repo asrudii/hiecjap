@@ -1,9 +1,14 @@
-import { Axios } from "axios";
+import Axios from "axios";
 import { API_URL } from "../../endpoint/API";
+import Swal from "sweetalert2";
 
-export const getCart = () => {
+export const getCart = (userId) => {
   return (dispatch) => {
-    Axios.get(`${API_URL}/carts`)
+    Axios.get(`${API_URL}/carts`, {
+      params: {
+        userId,
+      },
+    })
       .then((res) => {
         dispatch({
           type: "GET_CART",
@@ -11,7 +16,12 @@ export const getCart = () => {
         });
       })
       .catch((err) => {
-        alert("masalah pada server get cart");
+        Swal.fire({
+          title: "Error!",
+          text: "Gagal mengambil data cart dari server",
+          icon: "error",
+          confirmButtonText: "Close",
+        });
       });
   };
 };

@@ -20,7 +20,12 @@ class Category extends React.Component {
         });
       })
       .catch((err) => {
-        alert("terjadi masalah pada server");
+        Swal.fire({
+          title: "Error!",
+          text: "Gagal mendapatkan data product dari server",
+          icon: "error",
+          confirmButtonText: "Close",
+        });
       });
   }
 

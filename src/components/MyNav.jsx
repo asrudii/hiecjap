@@ -78,11 +78,13 @@ class MyNav extends Component {
                         History
                       </a>
                     </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        Admin
-                      </a>
-                    </li>
+                    {this.props.userGlobal.role == "admin" ? (
+                      <li>
+                        <Link to="/admin" class="dropdown-item">
+                          Admin
+                        </Link>
+                      </li>
+                    ) : null}
                     <li>
                       <hr class="dropdown-divider" />
                     </li>
@@ -101,7 +103,14 @@ class MyNav extends Component {
                   size={25}
                   onClick={() => this.handSearchBtn("show")}
                 /> */}
-                <FiShoppingCart size={25} />
+                <div className="cart-style">
+                  <Link to="/cart">
+                    {this.props.cartGlobal.cartData.length ? (
+                      <span>{this.props.cartGlobal.cartData.length}</span>
+                    ) : null}
+                    <FiShoppingCart size={25} />
+                  </Link>
+                </div>
               </div>
             ) : (
               <div class="d-flex flex-row align-items-center justify-content-end col-2 nav-icon">
@@ -131,6 +140,7 @@ class MyNav extends Component {
 const mapStateToProps = (state) => {
   return {
     userGlobal: state.userReducer,
+    cartGlobal: state.cartReducer,
   };
 };
 

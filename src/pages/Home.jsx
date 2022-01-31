@@ -3,7 +3,7 @@ import "../assets/style/home.css";
 import Axios from "axios";
 import { API_URL } from "../endpoint/API";
 import CardProduct from "../components/CardProduct";
-import { connect } from "react-redux";
+import Swal from "sweetalert2";
 
 class Home extends React.Component {
   state = {
@@ -16,7 +16,6 @@ class Home extends React.Component {
   };
   componentDidMount() {
     if (this.props.match.params.category) {
-      console.log(this.props.match.params.category);
       Axios.get(`${API_URL}/products`, {
         params: {
           category: this.props.match.params.category,
@@ -30,7 +29,12 @@ class Home extends React.Component {
           });
         })
         .catch((err) => {
-          alert("terjadi masalah pada server");
+          Swal.fire({
+            title: "Error!",
+            text: "Gagal mendapatkan product dari server",
+            icon: "error",
+            confirmButtonText: "Close",
+          });
         });
     } else {
       Axios.get(`${API_URL}/products`)
@@ -42,7 +46,12 @@ class Home extends React.Component {
           });
         })
         .catch((err) => {
-          alert("terjadi masalah pada server");
+          Swal.fire({
+            title: "Error!",
+            text: "Gagal mendapatkan product dari server",
+            icon: "error",
+            confirmButtonText: "Close",
+          });
         });
     }
   }

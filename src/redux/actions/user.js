@@ -1,26 +1,72 @@
 import Axios from "axios";
 import { API_URL } from "../../endpoint/API";
+import { Redirect } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const registerUser = ({ fullName, userName, password, email }) => {
   return (dispatch) => {
-    Axios.post(`${API_URL}/users`, {
-      fullName,
-      userName,
-      email,
-      password,
-      role: "user",
-      deliveryList: [],
+    // cek username sudah digunakan?
+    Axios.get(`${API_URL}/users`, {
+      params: {
+        userName,
+      },
     })
       .then((res) => {
-        delete res.data.password;
-        dispatch({
-          type: "AUTH_USER",
-          payload: res.data,
-        });
-        alert("daftar user berhasil");
+        if (res.data.length) {
+          dispatch({
+            type: "ERROR_LOGIN",
+            payload: "Username sudah digunakan",
+          });
+        } else {
+          // cek email sudah digunakan?
+          Axios.get(`${API_URL}/users`, {
+            params: {
+              email,
+            },
+          }).then((res) => {
+            if (res.data.length) {
+              dispatch({
+                type: "ERROR_LOGIN",
+                payload: "Email sudah terdaftar",
+              });
+            } else {
+              Axios.post(`${API_URL}/users`, {
+                fullName,
+                userName,
+                email,
+                password,
+                role: "user",
+                deliveryList: [],
+              })
+                .then((res) => {
+                  delete res.data.password;
+                  dispatch({
+                    type: "AUTH_USER",
+                    payload: res.data,
+                  });
+
+                  Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Daftar user berhasil",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                })
+                .catch((err) => {
+                  Swal.fire({
+                    title: "Error!",
+                    text: "Gagal register",
+                    icon: "error",
+                    confirmButtonText: "Close",
+                  });
+                });
+            }
+          });
+        }
       })
       .catch((err) => {
-        alert("terjadi masalah pada server");
+        return err;
       });
   };
 };
@@ -34,14 +80,41 @@ export const loginUser = ({ email, password }) => {
     }).then((res) => {
       if (res.data.length) {
         if (password === res.data[0].password) {
-          console.log(res.data[0]);
           delete res.data[0].password;
           localStorage.setItem("userData", JSON.stringify(res.data[0]));
           dispatch({
             type: "AUTH_USER",
             payload: res.data[0],
           });
-          alert("kamu berhasil masuk");
+
+          // get Cart
+          Axios.get(`${API_URL}/carts`, {
+            params: {
+              userId: res.data[0].id,
+            },
+          })
+            .then((res) => {
+              dispatch({
+                type: "GET_CART",
+                payload: res.data,
+              });
+            })
+            .catch((err) => {
+              Swal.fire({
+                title: "Error!",
+                text: "Gagal mengambil data cart dari server",
+                icon: "error",
+                confirmButtonText: "Close",
+              });
+            });
+
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "kamu berhasil masuk",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         } else {
           dispatch({
             type: "ERROR_LOGIN",
@@ -58,11 +131,47 @@ export const loginUser = ({ email, password }) => {
   };
 };
 
+export const getUser = (email) => {
+  return (dispatch) => {
+    Axios.get(`${API_URL}/users`, {
+      params: {
+        email,
+      },
+    }).then((res) => {
+      if (res.data.length) {
+        delete res.data[0].password;
+        localStorage.setItem("userData", JSON.stringify(res.data[0]));
+        dispatch({
+          type: "AUTH_USER",
+          payload: res.data[0],
+        });
+      }
+    });
+  };
+};
+
 export const logOut = () => {
-  localStorage.removeItem("userDataEmerce");
+  localStorage.removeItem("userData");
+  Swal.fire({
+    position: "center",
+    icon: "success",
+    title: "Berhasil logout",
+    showConfirmButton: false,
+    timer: 1500,
+  });
+
   return (dispatch) => {
     dispatch({
       type: "LOG_OUT",
+    });
+  };
+};
+
+export const setErrorMessage = (errMsg) => {
+  return (dispatch) => {
+    dispatch({
+      type: "ERROR_LOGIN",
+      payload: errMsg,
     });
   };
 };
@@ -83,7 +192,12 @@ export const keepLoginUser = (userData) => {
         });
       })
       .catch((err) => {
-        alert("terjadi kesalahan pada server");
+        Swal.fire({
+          title: "Error!",
+          text: "Gagal keep login",
+          icon: "error",
+          confirmButtonText: "Close",
+        });
       });
   };
 };

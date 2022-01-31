@@ -24,3 +24,24 @@
 .close-search {
   cursor: pointer;
 }
+.cart-style {
+  position: relative;
+}
+.cart-style > a > span {
+  position: absolute;
+  top: -10px;
+  right: -15px;
+  width: 26px;
+  height: 26px;
+  background-color: red;
+  opacity: 0.8;
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+  line-height: 26px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.cart-style > a > svg {
+  color: rgb(39, 39, 39);
+}

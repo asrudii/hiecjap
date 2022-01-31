@@ -27,11 +27,7 @@ class Login extends React.Component {
   };
 
   btnLogin = () => {
-    if (!this.state.email || !this.state.password) {
-      alert("email dan password harus diisi");
-    } else {
-      this.props.loginUser(this.state);
-    }
+    this.props.loginUser(this.state);
   };
 
   render() {
@@ -39,7 +35,7 @@ class Login extends React.Component {
       return <Redirect to="/" />;
     }
     return (
-      <div className="container-fluid page-style-auth">
+      <div className="container-fluid page-style">
         <div className="col-6 m-auto ps-1 box-auth row">
           <div className="col-6 py-5 text-center">
             <div className="title-login">
@@ -52,15 +48,7 @@ class Login extends React.Component {
                   class="alert alert-danger alert-dismissible fade show p-1 m-0"
                   role="alert"
                 >
-                  {this.props.userGlobal.errMsg}
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="alert"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                  Gagal login
                 </div>
               )}
               <div className="formgroup ">

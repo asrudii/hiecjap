@@ -1,10 +1,11 @@
 import React from "react";
-import axios from "axios";
+import Axios from "axios";
 import { API_URL } from "../endpoint/API";
 import { FiShoppingCart } from "react-icons/fi";
 import "../assets/style/detail.css";
 import { connect } from "react-redux";
-import addCart from "../redux/actions/cart";
+import { getCart } from "../redux/actions/cart";
+import Swal from "sweetalert2";
 
 class ProductDetail extends React.Component {
   state = {
@@ -13,51 +14,100 @@ class ProductDetail extends React.Component {
   };
 
   componentDidMount() {
-    axios
-      .get(`${API_URL}/products`, {
-        params: {
-          id: this.props.match.params.id,
-        },
-      })
+    Axios.get(`${API_URL}/products`, {
+      params: {
+        id: this.props.match.params.id,
+      },
+    })
       .then((res) => {
         this.setState({
           dataProduct: res.data[0],
         });
       })
       .catch((err) => {
-        alert("server error");
+        Swal.fire({
+          title: "Error!",
+          text: "Gagal mendapatkan product dari server",
+          icon: "error",
+          confirmButtonText: "Close",
+        });
       });
   }
 
   addCart = () => {
-    axios
-      .get(`${API_URL}/carts`, {
-        params: {
-          userId: this.userGlobal.id,
-          productId: this.state.dataProduct.id,
-        },
-      })
+    Axios.get(`${API_URL}/carts`, {
+      params: {
+        userId: this.props.userGlobal.id,
+        productId: this.state.dataProduct.id,
+      },
+    })
       .then((res) => {
         if (res.data.length) {
-          // patch
-        } else {
-          axios
-            .post(`${API_URL}/carts`, {
-              userId: this.props.userGlobal.id,
-              productId: this.state.dataProduct.id,
-              productName: this.state.dataProduct.productName,
-              price: this.state.dataProduct.price,
-              productImage: this.state.dataProduct.productImage,
-              quantity: this.state.qtyProduct,
-            })
+          Axios.patch(`${API_URL}/carts/${res.data[0].id}`, {
+            quantity: res.data[0].quantity + this.state.qtyProduct,
+          })
             .then((res) => {
-              alert("berhasil menambahkan cart");
-              this.props.getCart();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Berhasil ditambahkan ke cart",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              const userLocalStorage = localStorage.getItem("userData");
+              if (userLocalStorage) {
+                const userData = JSON.parse(userLocalStorage);
+                this.props.getCart(userData.id);
+              }
             })
             .catch((err) => {
-              alert("terjadi masalah pada server");
+              Swal.fire({
+                title: "Error!",
+                text: "Gagal menambahkan ke cart",
+                icon: "error",
+                confirmButtonText: "Close",
+              });
+            });
+        } else {
+          Axios.post(`${API_URL}/carts`, {
+            userId: this.props.userGlobal.id,
+            productId: this.state.dataProduct.id,
+            productName: this.state.dataProduct.productName,
+            price: this.state.dataProduct.price,
+            productImage: this.state.dataProduct.productImage,
+            quantity: this.state.qtyProduct,
+          })
+            .then((res) => {
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Berhasil ditambahkan ke cart",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              const userLocalStorage = localStorage.getItem("userData");
+              if (userLocalStorage) {
+                const userData = JSON.parse(userLocalStorage);
+                this.props.getCart(userData.id);
+              }
+            })
+            .catch((err) => {
+              Swal.fire({
+                title: "Error!",
+                text: "Gagal menambahkan ke cart",
+                icon: "error",
+                confirmButtonText: "Close",
+              });
             });
         }
+      })
+      .catch((err) => {
+        Swal.fire({
+          title: "Error!",
+          text: "Gagal menambahkan ke cart",
+          icon: "error",
+          confirmButtonText: "Close",
+        });
       });
   };
 
@@ -76,13 +126,16 @@ class ProductDetail extends React.Component {
   };
 
   changeQty = (e) => {
-    this.setState({
-      qtyProduct: e.target.value,
-    });
+    if (isNaN(e.target.value) || e.target.value == "0") {
+      return;
+    } else {
+      this.setState({
+        qtyProduct: parseInt(e.target.value),
+      });
+    }
   };
 
   render() {
-    console.log(this.props.match.params.id);
     return (
       <div className="container-fluid page-style">
         <div className="row d-flex justify-content-center">
@@ -127,4 +180,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(ProductDetail);
+const mapDispatchToProps = { getCart };
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);

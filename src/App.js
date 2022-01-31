@@ -8,8 +8,10 @@ import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
 import MyNav from "./components/MyNav";
 import ProductDetail from "./pages/ProductDetail";
+import Cart from "./pages/Cart";
+import Admin from "./pages/Admin";
 import { keepLoginUser, checkStorage } from "./redux/actions/user";
-
+import { getCart } from "./redux/actions/cart";
 import { connect } from "react-redux";
 
 class App extends React.Component {
@@ -18,6 +20,7 @@ class App extends React.Component {
     if (userLocalStorage) {
       const userData = JSON.parse(userLocalStorage);
       this.props.keepLoginUser(userData);
+      this.props.getCart(userData.id);
     } else {
       this.props.checkStorage();
     }
@@ -32,6 +35,8 @@ class App extends React.Component {
           <Route component={Home} path="/product/:category" />
           <Route component={Login} path="/login" />
           <Route component={Register} path="/register" />
+          <Route component={Cart} path="/cart" />
+          <Route component={Admin} path="/admin" />
           <Route component={ProductDetail} path="/product-detail/:id" />
         </Switch>
       </BrowserRouter>
@@ -47,6 +52,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   keepLoginUser,
+  getCart,
   checkStorage,
 };
 

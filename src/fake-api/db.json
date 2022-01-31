@@ -12,14 +12,24 @@
           "recipientName": "Asep",
           "address": "Kp. Daya Mekar RT 02 RW 03 Desa Cikalong Kec. Cikalong Wetan Kab. Bandung Barat",
           "postalCode": 40336,
-          "handphone": 810280821
+          "handphone": 810280821,
+          "default": true
         },
         {
           "id": 2,
           "recipientName": "Rudi",
           "address": "Kp. Cibeunying ujung berung",
           "postalCode": 57654,
-          "handphone": 810280821
+          "handphone": 810280821,
+          "default": false
+        },
+        {
+          "id": 3,
+          "recipientName": "Asrud",
+          "address": "Sukabumi",
+          "postalCode": "76278",
+          "handphone": "082686123",
+          "default": false
         }
       ],
       "id": 1
@@ -30,34 +40,163 @@
       "email": "roni@mail.com",
       "password": "12345",
       "role": "user",
-      "deliveryList": [],
+      "deliveryList": [
+        {
+          "id": 1,
+          "recipientName": "Roni",
+          "address": "kp. daya mekar rt.02 rw.03 desa cikalong kec.cikalong wetan",
+          "postalCode": "40056",
+          "handphone": "0892178938",
+          "default": true
+        }
+      ],
       "id": 2
     }
   ],
   "transactions": [
     {
-      "userId": 6,
-      "recipientName": "Rudi",
-      "address": "Kp. Cibeunying ujung berung",
-      "postalCode": 57654,
-      "handphone": 810280821,
-      "courier": "siGercep",
-      "totalPrice": 157500,
-      "totalPayment": 200000,
-      "transactionDate": "10 - 1 - 2022",
+      "userId": 2,
+      "totalPrice": 126000,
+      "totalPayment": 126000,
+      "transactionDate": "31 - 1 - 2022",
       "transactionItems": [
         {
-          "userId": 6,
-          "productId": 13,
-          "productName": "Hijab coklat",
-          "price": 50000,
-          "productImage": "https://dynamic.zacdn.com/WimYSdPrkfy4GS0No22_x2or3OM=/fit-in/236x345/filters:quality(90):fill(ffffff)/https://static-id.zacdn.com/p/bodypack-0154-5451903-2.jpg",
+          "userId": 2,
+          "productId": 3,
+          "productName": "Hijab Hijau Muda",
+          "price": 15000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog15_400x.jpg?v=1641531601",
           "quantity": 3,
-          "totalPrice": 4444,
-          "id": 1
+          "id": 3
+        },
+        {
+          "userId": 2,
+          "productId": 6,
+          "productName": "Hijab Abu Muda",
+          "price": 15000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog3_400x.jpg?v=1641531385",
+          "quantity": 4,
+          "id": 6
+        },
+        {
+          "userId": 2,
+          "productId": 1,
+          "productName": "Hijab Hijau Tua",
+          "price": 15000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog21_400x.jpg?v=1641531665",
+          "quantity": 1,
+          "id": 8
         }
       ],
       "id": 1
+    },
+    {
+      "userId": 2,
+      "totalPrice": 110250,
+      "totalPayment": 200000,
+      "transactionDate": "31 - 1 - 2022",
+      "transactionItems": [
+        {
+          "userId": 2,
+          "productId": 3,
+          "productName": "Hijab Hijau Muda",
+          "price": 15000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog15_400x.jpg?v=1641531601",
+          "quantity": 3,
+          "id": 3
+        },
+        {
+          "userId": 2,
+          "productId": 6,
+          "productName": "Hijab Abu Muda",
+          "price": 15000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog3_400x.jpg?v=1641531385",
+          "quantity": 4,
+          "id": 6
+        }
+      ],
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "totalPrice": 52500,
+      "totalPayment": 100000,
+      "transactionDate": "31 - 1 - 2022",
+      "transactionItems": [
+        {
+          "userId": 2,
+          "productId": 1,
+          "productName": "Hijab Hijau Tua",
+          "price": 15000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog21_400x.jpg?v=1641531665",
+          "quantity": 2,
+          "id": 8
+        },
+        {
+          "userId": 2,
+          "productId": 5,
+          "productName": "Hijab Kuning Muda",
+          "price": 20000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog9_400x.jpg?v=1641531419",
+          "quantity": 1,
+          "id": 9
+        }
+      ],
+      "id": 3
+    },
+    {
+      "userId": 2,
+      "totalPrice": 52500,
+      "totalPayment": 100000,
+      "transactionDate": "31 - 1 - 2022",
+      "transactionItems": [
+        {
+          "userId": 2,
+          "productId": 1,
+          "productName": "Hijab Hijau Tua",
+          "price": 15000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog21_400x.jpg?v=1641531665",
+          "quantity": 2,
+          "id": 8
+        },
+        {
+          "userId": 2,
+          "productId": 5,
+          "productName": "Hijab Kuning Muda",
+          "price": 20000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog9_400x.jpg?v=1641531419",
+          "quantity": 1,
+          "id": 9
+        }
+      ],
+      "id": 4
+    },
+    {
+      "userId": 2,
+      "totalPrice": 31500,
+      "totalPayment": 50000,
+      "transactionDate": "31 - 1 - 2022",
+      "transactionItems": [
+        {
+          "userId": 2,
+          "productId": 1,
+          "productName": "Hijab Hijau Tua",
+          "price": 15000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog21_400x.jpg?v=1641531665",
+          "quantity": 1,
+          "id": 8
+        },
+        {
+          "userId": 2,
+          "productId": 3,
+          "productName": "Hijab Hijau Muda",
+          "price": 15000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog15_400x.jpg?v=1641531601",
+          "quantity": 1,
+          "id": 9
+        }
+      ],
+      "id": 5
     }
   ],
   "products": [
@@ -232,31 +371,13 @@
   ],
   "carts": [
     {
-      "userId": 6,
-      "productId": 13,
-      "productName": "Hijab coklat",
-      "price": 50000,
-      "productImage": "https://dynamic.zacdn.com/WimYSdPrkfy4GS0No22_x2or3OM=/fit-in/236x345/filters:quality(90):fill(ffffff)/https://static-id.zacdn.com/p/bodypack-0154-5451903-2.jpg",
-      "quantity": 3,
-      "id": 1
-    },
-    {
-      "userId": 0,
-      "productId": 2,
-      "productName": "Hijab Hijau",
-      "price": 25000,
-      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog17_400x.jpg?v=1641532033",
-      "quantity": 4,
-      "id": 2
-    },
-    {
-      "userId": 2,
-      "productId": 3,
-      "productName": "Hijab Hijau Muda",
-      "price": 15000,
-      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog15_400x.jpg?v=1641531601",
-      "quantity": 4,
-      "id": 3
+      "userId": 1,
+      "productId": 10,
+      "productName": "Hijab Oren",
+      "price": 30000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Dessert-Sun3_400x.jpg?v=1634869429",
+      "quantity": 2,
+      "id": 7
     }
   ],
   "courier": [

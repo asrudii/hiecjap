@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../../assets/style/auth.css";
 import { Link } from "react-router-dom";
+import Axios from "axios";
 import {
   FiLock,
   FiMail,
@@ -10,8 +11,10 @@ import {
   FiCreditCard,
   FiEyeOff,
 } from "react-icons/fi";
-import { registerUser } from "../../redux/actions/user";
+import { registerUser, setErrorMessage } from "../../redux/actions/user";
 import { connect } from "react-redux";
+import Swal from "sweetalert2";
+import { API_URL } from "../../endpoint/API";
 
 class Register extends React.Component {
   state = {
@@ -37,8 +40,24 @@ class Register extends React.Component {
   };
 
   handReg = () => {
-    if (!this.state.userName || !this.state.email || !this.state.password) {
-      alert("data email, userName, dan password harus diisi");
+    if (
+      !this.state.userName ||
+      !this.state.email ||
+      !this.state.password ||
+      !this.state.fullName
+    ) {
+      Swal.fire({
+        title: "Error!",
+        text: "Mohon isi data dengan lengkap",
+        icon: "error",
+        confirmButtonText: "Close",
+      });
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(this.state.email)
+    ) {
+      this.props.setErrorMessage("Alamat email tidak valid");
+    } else if (this.state.password.length < 5) {
+      this.props.setErrorMessage("Password kurang dari 5 huruf");
     } else {
       this.props.registerUser(this.state);
     }
@@ -46,7 +65,7 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid page-style-auth">
+      <div className="container-fluid page-style">
         <div className="col-6 m-auto ps-1 box-auth row">
           <div className="col-6 py-5 text-center">
             <div className="title-login">
@@ -54,6 +73,14 @@ class Register extends React.Component {
               <span>Silahkan daftar & isi form berikut.</span>
             </div>
             <div className="mt-5 d-grid gap-4 col-8 mx-auto">
+              {this.props.userGlobal.errMsg && (
+                <div
+                  class="alert alert-danger alert-dismissible fade show p-1 m-0"
+                  role="alert"
+                >
+                  {this.props.userGlobal.errMsg}
+                </div>
+              )}
               <div className="formgroup ">
                 <FiUser
                   size={20}
@@ -76,7 +103,7 @@ class Register extends React.Component {
                 />
                 <input
                   onChange={this.handInput}
-                  placeholder="masukkan userName"
+                  placeholder="masukkan username"
                   name="userName"
                   type="text"
                   class="form-control"
@@ -158,12 +185,15 @@ class Register extends React.Component {
   }
 }
 
-const mapStateToProps = () => {
-  return {};
+const mapStateToProps = (state) => {
+  return {
+    userGlobal: state.userReducer,
+  };
 };
 
 const mapDispatchToProps = {
   registerUser,
+  setErrorMessage,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);
