@@ -1,3 +1,6 @@
 .admin-product-image {
   height: 125px;
 }
+.button-admin {
+  cursor: pointer;
+}

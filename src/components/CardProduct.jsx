@@ -12,6 +12,15 @@ class CardProduct extends React.Component {
   state = {};
 
   addCart = () => {
+    if (this.props.userGlobal.role == "admin") {
+      Swal.fire({
+        title: "Error!",
+        text: "Maaf admin tidak bisa menambahkan cart",
+        icon: "error",
+        confirmButtonText: "Close",
+      });
+      return;
+    }
     Axios.get(`${API_URL}/carts`, {
       params: {
         userId: this.props.userGlobal.id,

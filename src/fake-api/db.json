@@ -8,27 +8,11 @@
       "role": "admin",
       "deliveryList": [
         {
-          "id": 1,
-          "recipientName": "Asep",
-          "address": "Kp. Daya Mekar RT 02 RW 03 Desa Cikalong Kec. Cikalong Wetan Kab. Bandung Barat",
-          "postalCode": 40336,
-          "handphone": 810280821,
-          "default": true
-        },
-        {
           "id": 2,
-          "recipientName": "Rudi",
-          "address": "Kp. Cibeunying ujung berung",
-          "postalCode": 57654,
-          "handphone": 810280821,
-          "default": false
-        },
-        {
-          "id": 3,
-          "recipientName": "Asrud",
-          "address": "Sukabumi",
-          "postalCode": "76278",
-          "handphone": "082686123",
+          "recipientName": "Asep",
+          "address": "Kp. Daya Mekar RT 02 RW 03 Cikalong Cikalong Wetan",
+          "postalCode": "40873",
+          "handphone": "0862528821",
           "default": false
         }
       ],
@@ -44,46 +28,73 @@
         {
           "id": 1,
           "recipientName": "Roni",
-          "address": "kp. daya mekar rt.02 rw.03 desa cikalong kec.cikalong wetan",
-          "postalCode": "40056",
-          "handphone": "0892178938",
+          "address": "Kp. Daya Mekar RT 02 RW 03 Desa Cikalong Kec. Cikalong Wetan Kab. Bandung Barat",
+          "postalCode": "40556",
+          "handphone": "0826618821",
+          "default": false
+        },
+        {
+          "id": 2,
+          "recipientName": "Asep",
+          "address": "Kp. Daya Mekar RT 02 RW 03 Cikalong Cikalong Wetan",
+          "postalCode": "40873",
+          "handphone": "0862528821",
           "default": true
+        },
+        {
+          "recipientName": "Roni 5",
+          "address": "Jl. dr. Dustira Cimahi",
+          "postalCode": "23879",
+          "handphone": "088367223",
+          "default": false
         }
       ],
       "id": 2
+    },
+    {
+      "fullName": "nano",
+      "userName": "roni@mail.com",
+      "email": "nan@mail.com",
+      "password": "12345",
+      "role": "user",
+      "deliveryList": [
+        {
+          "id": 1,
+          "recipientName": "Roni",
+          "address": "Kp. Daya Mekar RT 02 RW 03 Desa Cikalong Kec. Cikalong Wetan Kab. Bandung Barat",
+          "postalCode": "40556",
+          "handphone": "0826618821",
+          "default": false
+        },
+        {
+          "id": 2,
+          "recipientName": "Asep",
+          "address": "Kp. Daya Mekar RT 02 RW 03 Cikalong Cikalong Wetan",
+          "postalCode": "40873",
+          "handphone": "0862528821",
+          "default": false
+        }
+      ],
+      "id": 3
     }
   ],
   "transactions": [
     {
       "userId": 2,
-      "totalPrice": 126000,
-      "totalPayment": 126000,
+      "address": "Kp. Daya Mekar RT 02 RW 03 Desa Cikalong Kec. Cikalong Wetan Kab. Bandung Barat",
+      "recipientName": "Roni",
+      "postalCode": "40556",
+      "handphone": "0826618821",
+      "totalPrice": 26250,
+      "totalPayment": 50000,
       "transactionDate": "31 - 1 - 2022",
       "transactionItems": [
         {
           "userId": 2,
-          "productId": 3,
-          "productName": "Hijab Hijau Muda",
-          "price": 15000,
-          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog15_400x.jpg?v=1641531601",
-          "quantity": 3,
-          "id": 3
-        },
-        {
-          "userId": 2,
-          "productId": 6,
-          "productName": "Hijab Abu Muda",
-          "price": 15000,
-          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog3_400x.jpg?v=1641531385",
-          "quantity": 4,
-          "id": 6
-        },
-        {
-          "userId": 2,
-          "productId": 1,
-          "productName": "Hijab Hijau Tua",
-          "price": 15000,
-          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog21_400x.jpg?v=1641531665",
+          "productId": 2,
+          "productName": "Hijab Hijau",
+          "price": 25000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog17_400x.jpg?v=1641532033",
           "quantity": 1,
           "id": 8
         }
@@ -92,111 +103,65 @@
     },
     {
       "userId": 2,
-      "totalPrice": 110250,
-      "totalPayment": 200000,
-      "transactionDate": "31 - 1 - 2022",
+      "address": "Kp. Daya Mekar RT 02 RW 03 Cikalong Cikalong Wetan",
+      "recipientName": "Asep",
+      "postalCode": "40873",
+      "handphone": "0862528821",
+      "totalPrice": 42000,
+      "totalPayment": 50000,
+      "transactionDate": "2 - 2 - 2022",
       "transactionItems": [
+        {
+          "userId": 2,
+          "productId": 2,
+          "productName": "Hijab Hijau",
+          "price": 25000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog17_400x.jpg?v=1641532033",
+          "quantity": 1,
+          "id": 8
+        },
         {
           "userId": 2,
           "productId": 3,
           "productName": "Hijab Hijau Muda",
           "price": 15000,
           "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog15_400x.jpg?v=1641531601",
-          "quantity": 3,
-          "id": 3
-        },
-        {
-          "userId": 2,
-          "productId": 6,
-          "productName": "Hijab Abu Muda",
-          "price": 15000,
-          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog3_400x.jpg?v=1641531385",
-          "quantity": 4,
-          "id": 6
+          "quantity": 1,
+          "id": 9
         }
       ],
       "id": 2
     },
     {
       "userId": 2,
-      "totalPrice": 52500,
+      "address": "Kp. Daya Mekar RT 02 RW 03 Cikalong Cikalong Wetan",
+      "recipientName": "Asep",
+      "postalCode": "40873",
+      "handphone": "0862528821",
+      "totalPrice": 89250,
       "totalPayment": 100000,
-      "transactionDate": "31 - 1 - 2022",
+      "transactionDate": "2 - 2 - 2022",
       "transactionItems": [
         {
           "userId": 2,
-          "productId": 1,
-          "productName": "Hijab Hijau Tua",
-          "price": 15000,
-          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog21_400x.jpg?v=1641531665",
-          "quantity": 2,
+          "productId": 2,
+          "productName": "Hijab Hijau",
+          "price": 25000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog17_400x.jpg?v=1641532033",
+          "quantity": 1,
           "id": 8
         },
         {
           "userId": 2,
-          "productId": 5,
-          "productName": "Hijab Kuning Muda",
-          "price": 20000,
-          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog9_400x.jpg?v=1641531419",
-          "quantity": 1,
+          "productId": 12,
+          "productName": "Hijab Ungu Tua",
+          "price": 30000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/London-Bridge3_400x.jpg?v=1634809629",
+          "quantity": 2,
           "id": 9
         }
       ],
       "id": 3
-    },
-    {
-      "userId": 2,
-      "totalPrice": 52500,
-      "totalPayment": 100000,
-      "transactionDate": "31 - 1 - 2022",
-      "transactionItems": [
-        {
-          "userId": 2,
-          "productId": 1,
-          "productName": "Hijab Hijau Tua",
-          "price": 15000,
-          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog21_400x.jpg?v=1641531665",
-          "quantity": 2,
-          "id": 8
-        },
-        {
-          "userId": 2,
-          "productId": 5,
-          "productName": "Hijab Kuning Muda",
-          "price": 20000,
-          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog9_400x.jpg?v=1641531419",
-          "quantity": 1,
-          "id": 9
-        }
-      ],
-      "id": 4
-    },
-    {
-      "userId": 2,
-      "totalPrice": 31500,
-      "totalPayment": 50000,
-      "transactionDate": "31 - 1 - 2022",
-      "transactionItems": [
-        {
-          "userId": 2,
-          "productId": 1,
-          "productName": "Hijab Hijau Tua",
-          "price": 15000,
-          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog21_400x.jpg?v=1641531665",
-          "quantity": 1,
-          "id": 8
-        },
-        {
-          "userId": 2,
-          "productId": 3,
-          "productName": "Hijab Hijau Muda",
-          "price": 15000,
-          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog15_400x.jpg?v=1641531601",
-          "quantity": 1,
-          "id": 9
-        }
-      ],
-      "id": 5
     }
   ],
   "products": [
@@ -367,6 +332,22 @@
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/106_400x.jpg?v=1575817274",
       "description": "ini barang cute banget loh",
       "category": "syar'i"
+    },
+    {
+      "productName": "Ring Scraft",
+      "price": 235000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/WhatsAppImage2020-07-20at21.01.07_1_600x.jpg?v=1595296253",
+      "description": "Ring scraft terbuat dari bahan logam premium",
+      "category": "aksesoris",
+      "id": 21
+    },
+    {
+      "productName": "Inner Bandana",
+      "price": 25000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/WhatsAppImage2020-04-18at08.53.14_600x.jpg?v=1587362158",
+      "description": "Kain terbuat dari sutra dengan berbagai macam ukuran",
+      "category": "aksesoris",
+      "id": 22
     }
   ],
   "carts": [
@@ -376,7 +357,7 @@
       "productName": "Hijab Oren",
       "price": 30000,
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Dessert-Sun3_400x.jpg?v=1634869429",
-      "quantity": 2,
+      "quantity": 1,
       "id": 7
     }
   ],

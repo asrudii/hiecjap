@@ -73,10 +73,17 @@ class MyNav extends Component {
                     class="dropdown-menu"
                     aria-labelledby="dropdownMenuButton1"
                   >
+                    {this.props.userGlobal.role == "user" ? (
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          Transaksi
+                        </a>
+                      </li>
+                    ) : null}
                     <li>
-                      <a class="dropdown-item" href="#">
-                        History
-                      </a>
+                      <Link to="/profile" class="dropdown-item">
+                        Profil
+                      </Link>
                     </li>
                     {this.props.userGlobal.role == "admin" ? (
                       <li>
@@ -103,14 +110,16 @@ class MyNav extends Component {
                   size={25}
                   onClick={() => this.handSearchBtn("show")}
                 /> */}
-                <div className="cart-style">
-                  <Link to="/cart">
-                    {this.props.cartGlobal.cartData.length ? (
-                      <span>{this.props.cartGlobal.cartData.length}</span>
-                    ) : null}
-                    <FiShoppingCart size={25} />
-                  </Link>
-                </div>
+                {this.props.userGlobal.role == "user" ? (
+                  <div className="cart-style">
+                    <Link to="/cart">
+                      {this.props.cartGlobal.cartData.length ? (
+                        <span>{this.props.cartGlobal.cartData.length}</span>
+                      ) : null}
+                      <FiShoppingCart size={25} />
+                    </Link>
+                  </div>
+                ) : null}
               </div>
             ) : (
               <div class="d-flex flex-row align-items-center justify-content-end col-2 nav-icon">

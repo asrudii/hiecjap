@@ -1,6 +1,7 @@
 import React from "react";
 import "../assets/style/cart.css";
-import { FiTrash2 } from "react-icons/fi";
+import { FiTrash2, FiMapPin, FiPhone } from "react-icons/fi";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Axios from "axios";
 import { API_URL } from "../endpoint/API";
@@ -11,15 +12,16 @@ import ListAddress from "../components/ListAddress";
 
 class Cart extends React.Component {
   state = {
-    isCheckOut: true,
-    recipientName: "",
-    address: "",
-    postalCode: 0,
-    handphone: 0,
     pay: 0,
     qtyVal: 0,
-    isAddAddress: false,
+    redirect: false,
   };
+
+  componentDidMount() {
+    this.setState({
+      redirect: false,
+    });
+  }
 
   deleteCart = (id, pay) => {
     if (pay !== "pay") {
@@ -80,62 +82,11 @@ class Cart extends React.Component {
     return this.rendSubtotal() + this.rendTax();
   };
 
-  handChecOut = () => {
-    this.setState({
-      isCheckOut: !this.state.isCheckOut,
-    });
-  };
-
   inputHandler = (e) => {
     const { name, value } = e.target;
     this.setState({
       [name]: value,
     });
-  };
-
-  addAddress = (reset) => {
-    if (reset == "resetForm") {
-      this.setState({ isAddAddress: false });
-    } else if (reset == "new") {
-      // setup address data
-      let { recipientName, address, postalCode, handphone } = this.state;
-      let id = this.props.userGlobal.deliveryList.length + 1;
-      let newDeliveryList = [
-        ...this.props.userGlobal.deliveryList,
-        {
-          id,
-          recipientName,
-          address,
-          postalCode,
-          handphone,
-          default: this.props.userGlobal.deliveryList.length ? true : false,
-        },
-      ];
-      // add address data to server
-      Axios.patch(`${API_URL}/users/${this.props.userGlobal.id}`, {
-        deliveryList: newDeliveryList,
-      })
-        .then((res) => {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "berhasil menambahkan alamat",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          this.props.getUser(this.props.userGlobal.email);
-        })
-        .catch((err) => {
-          Swal.fire({
-            title: "Error!",
-            text: "Gagal menambahkan alamat baru",
-            icon: "error",
-            confirmButtonText: "Close",
-          });
-        });
-    } else {
-      this.setState({ isAddAddress: true });
-    }
   };
 
   payment = () => {
@@ -168,42 +119,56 @@ class Cart extends React.Component {
     }
 
     let date = new Date();
-    let { recipientName, address, postalCode, handphone, id } =
-      this.props.userGlobal.deliveryList;
+    let addressData = this.props.userGlobal.deliveryList.filter((item) => {
+      return item.default;
+    });
+    let { recipientName, address, postalCode, handphone } = addressData[0];
 
-    Axios.post(`${API_URL}/transactions`, {
-      userId: this.props.userGlobal.id,
-      address,
-      recipientName,
-      postalCode,
-      handphone,
-      totalPrice: parseInt(this.rendTotal()),
-      totalPayment: parseInt(this.state.pay),
-      transactionDate: `${date.getDate()} - ${
-        date.getMonth() + 1
-      } - ${date.getFullYear()}`,
-      transactionItems: this.props.cartGlobal.cartData,
-    })
-      .then((res) => {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "berhasil checout",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        res.data.transactionItems.forEach((val) => {
-          this.deleteCart(val.id, "pay");
-        });
+    if (recipientName && address && postalCode && handphone) {
+      Axios.post(`${API_URL}/transactions`, {
+        userId: this.props.userGlobal.id,
+        address,
+        recipientName,
+        postalCode,
+        handphone,
+        totalPrice: parseInt(this.rendTotal()),
+        totalPayment: parseInt(this.state.pay),
+        transactionDate: `${date.getDate()} - ${
+          date.getMonth() + 1
+        } - ${date.getFullYear()}`,
+        transactionItems: this.props.cartGlobal.cartData,
       })
-      .catch((err) => {
-        Swal.fire({
-          title: "Error!",
-          text: "Gagal checkout",
-          icon: "error",
-          confirmButtonText: "Close",
+        .then((res) => {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "berhasil checout",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          res.data.transactionItems.forEach((val) => {
+            this.deleteCart(val.id, "pay");
+          });
+          this.setState({
+            redirect: true,
+          });
+        })
+        .catch((err) => {
+          Swal.fire({
+            title: "Error!",
+            text: "Gagal checkout",
+            icon: "error",
+            confirmButtonText: "Close",
+          });
         });
+    } else {
+      Swal.fire({
+        title: "Error!",
+        text: "Mohon isi alamat terlebih dahulu",
+        icon: "error",
+        confirmButtonText: "Close",
       });
+    }
   };
 
   incCart = (item) => {
@@ -291,16 +256,32 @@ class Cart extends React.Component {
     if (address.length) {
       return (
         <div className="list-group">
-          <li href="#" className="list-group-item" aria-current="true">
-            <h4>Alamat Pengiriman</h4>
+          <li href="#" className="list-group-item py-3" aria-current="true">
+            <div className="d-flex mb-2">
+              <FiMapPin size={26} className="me-2" />
+              <h4>Alamat Pengiriman</h4>
+            </div>
             <div className="d-flex w-100 justify-content-between">
               <h5 className="mb-1">{address[0].recipientName}</h5>
-              {/* <button className="btn btn-success">Pilih Alamat</button> */}
             </div>
-            <p className="mb-1">
-              {address[0].address} | {address[0].postalCode}
-            </p>
-            <span>+62 {address[0].handphone}</span>
+            <div className="d-flex align-items-center">
+              <div className="col-1">
+                <FiMapPin size={18} className="me-2" />
+              </div>
+              <div className="col-11">
+                <p className="mb-1">
+                  {address[0].address} | {address[0].postalCode}
+                </p>
+              </div>
+            </div>
+            <div className="d-flex align-items-center mt-1">
+              <div className="col-1">
+                <FiPhone size={18} className="me-2" />
+              </div>
+              <div className="col-11">
+                <span>{address[0].handphone}</span>
+              </div>
+            </div>
           </li>
         </div>
       );
@@ -314,47 +295,62 @@ class Cart extends React.Component {
   };
 
   renderCart = () => {
-    return this.props.cartGlobal.cartData.map((item) => {
-      return (
-        <div class="d-flex card-custom" key={item.id}>
-          <img class="card-img" src={item.productImage} alt="Card image cap" />
-          <div class="card-body d-flex flex-column justify-content-between ">
-            <div>
-              <h6 className="prod-name-cart">{item.productName}</h6>
+    if (this.props.cartGlobal.cartData.length) {
+      return this.props.cartGlobal.cartData.map((item) => {
+        return (
+          <div class="d-flex card-custom" key={item.id}>
+            <img
+              class="card-img"
+              src={item.productImage}
+              alt="Card image cap"
+            />
+            <div class="card-body d-flex flex-column justify-content-between ">
+              <div>
+                <h6 className="prod-name-cart">{item.productName}</h6>
 
-              <span className="price size-price">
-                {item ? this.stringToIDR(item.price) : null}
-              </span>
-            </div>
-            <div className="action d-flex justify-content-end align-items-center ">
-              <FiTrash2
-                size={25}
-                className="icon"
-                onClick={() => this.deleteCart(item.id)}
-              />
-              <div className="d-flex justify-content-start numb-cart2 my-4">
-                <button onClick={() => this.decCart(item)}>-</button>
-                <input
-                  type="text"
-                  value={item.quantity}
-                  onChange={(e) => this.changeQty(e, item)}
-                />
-                <button onClick={() => this.incCart(item)}>+</button>
-              </div>
-              <div className="d-flex flex-column">
-                <span>
-                  <strong>Total Harga</strong>
+                <span className="price size-price">
+                  {item ? this.stringToIDR(item.price) : null}
                 </span>
-                <span>{this.stringToIDR(item.quantity * item.price)}</span>
+              </div>
+              <div className="action d-flex justify-content-end align-items-center ">
+                <FiTrash2
+                  size={25}
+                  className="icon"
+                  onClick={() => this.deleteCart(item.id)}
+                />
+                <div className="d-flex justify-content-start numb-cart2 my-4">
+                  <button onClick={() => this.decCart(item)}>-</button>
+                  <input
+                    type="text"
+                    value={item.quantity}
+                    onChange={(e) => this.changeQty(e, item)}
+                  />
+                  <button onClick={() => this.incCart(item)}>+</button>
+                </div>
+                <div className="d-flex flex-column">
+                  <span>
+                    <strong>Total Harga</strong>
+                  </span>
+                  <span>{this.stringToIDR(item.quantity * item.price)}</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      );
-    });
+        );
+      });
+    } else {
+      return <h2 className="text-center">Cart kamu kosong, ayo belanja!</h2>;
+    }
   };
 
   render() {
+    if (this.props.userGlobal.role == "admin") {
+      return <Redirect to="/" />;
+    }
+    if (this.state.redirect) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <div className="container-fluid page-style">
         <div className="row d-flex justify-content-center">
@@ -362,61 +358,55 @@ class Cart extends React.Component {
             {/* render cart */}
             {this.renderCart()}
           </div>
-          {this.state.isCheckOut ? (
-            <div className="col-3">
-              <div className="card">
-                <div className="card-header ">
-                  <strong>Ringkasan Belanja</strong>
+
+          <div className="col-3">
+            <div className="card">
+              <div className="card-header ">
+                <strong>Ringkasan Belanja</strong>
+              </div>
+              <div className="card-body">
+                <div className="d-flex my-2 flex-row justify-content-between align-items-center">
+                  <span className="font-weight-bold me-3">Subtotal Harga</span>
+                  <span>{this.stringToIDR(this.rendSubtotal())}</span>
                 </div>
-                <div className="card-body">
-                  <div className="d-flex my-2 flex-row justify-content-between align-items-center">
-                    <span className="font-weight-bold me-3">
-                      Subtotal Harga
-                    </span>
-                    <span>{this.stringToIDR(this.rendSubtotal())}</span>
-                  </div>
-                  <div className="d-flex   my-2 flex-row justify-content-between align-items-center">
-                    <span className="font-weight-bold me-3">Pajak</span>
-                    <span>{this.stringToIDR(this.rendTax())}</span>
-                  </div>
-                  <div className="d-flex   my-2 flex-row justify-content-between align-items-center">
-                    <span className="font-weight-bold me-3">Total Harga</span>
-                    <span>{this.stringToIDR(this.rendTotal())}</span>
-                  </div>
+                <div className="d-flex   my-2 flex-row justify-content-between align-items-center">
+                  <span className="font-weight-bold me-3">Pajak</span>
+                  <span>{this.stringToIDR(this.rendTax())}</span>
                 </div>
-                {/* render default address */}
-                {this.props.userGlobal.deliveryList.length >= 1
-                  ? this.rendAddress()
-                  : null}
-                {/* get modal */}
-                <button
-                  type="button"
-                  class="btn btn-secondary my-3"
-                  data-bs-toggle="modal"
-                  data-bs-target="#selectAddress"
-                  onClick={() => this.addAddress("resetForm")}
-                >
-                  Pilih / Tambah Alamat
-                </button>
-                <div className="card-footer">
-                  <div className="d-flex flex-row justify-content-between align-items-center">
-                    <input
-                      onChange={this.inputHandler}
-                      name="pay"
-                      type="number"
-                      className="form-control mx-1"
-                    />
-                    <button
-                      onClick={this.payment}
-                      className="btn btn-success mx-1"
-                    >
-                      Bayar
-                    </button>
-                  </div>
+                <div className="d-flex   my-2 flex-row justify-content-between align-items-center">
+                  <span className="font-weight-bold me-3">Total Harga</span>
+                  <span>{this.stringToIDR(this.rendTotal())}</span>
+                </div>
+              </div>
+              {/* render default address */}
+              {this.rendAddress()}
+              {/* get modal */}
+              <button
+                type="button"
+                class="btn btn-secondary btn-lg my-3"
+                data-bs-toggle="modal"
+                data-bs-target="#selectAddress"
+              >
+                Pilih / Tambah Alamat
+              </button>
+              <div className="card-footer">
+                <div className="d-flex flex-row justify-content-between align-items-center">
+                  <input
+                    onChange={this.inputHandler}
+                    name="pay"
+                    type="text"
+                    className="form-control mx-1"
+                  />
+                  <button
+                    onClick={this.payment}
+                    className="btn btn-success mx-1"
+                  >
+                    Bayar
+                  </button>
                 </div>
               </div>
             </div>
-          ) : null}
+          </div>
         </div>
         {/* Modal */}
         <div
@@ -440,82 +430,9 @@ class Cart extends React.Component {
                 ></button>
               </div>
               <div class="modal-body">
-                <button
-                  className="btn btn-secondary btn-block mb-3"
-                  onClick={this.addAddress}
-                >
-                  + Tambah Alamat
-                </button>
-                {/* form alamat */}
-                {this.state.isAddAddress && (
-                  <div className="card-body border-top">
-                    <label htmlFor="">Nama Penerima</label>
-                    <input
-                      onChange={this.inputHandler}
-                      type="text"
-                      name="recipientName"
-                      id=""
-                      placeholder="Nama Penerima"
-                      className="form-control mb-3"
-                    />
-                    <label htmlFor="address">Alamat</label>
-                    <input
-                      onChange={this.inputHandler}
-                      type="text"
-                      name="address"
-                      id=""
-                      placeholder="Alamat"
-                      className="form-control mb-3"
-                    />
-                    <div className="input-group d-flex justify-content-between">
-                      <div>
-                        <label htmlFor="postalCode">Kode Pos</label>
-                        <input
-                          onChange={this.inputHandler}
-                          type="text"
-                          placeholder="kode pos"
-                          className="form-control"
-                          name="postalCode"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="handphone">No. HP</label>
-                        <input
-                          onChange={this.inputHandler}
-                          type="text"
-                          placeholder="Nomor HP"
-                          className="form-control"
-                          name="handphone"
-                        />
-                      </div>
-                    </div>
-                    <div className="mt-3 d-flex justify-content-end">
-                      <button
-                        className="btn btn-primary"
-                        onClick={() => this.addAddress("new")}
-                      >
-                        Simpan
-                      </button>
-                      <button
-                        className="btn btn-secondary ms-3"
-                        onClick={() => this.addAddress("resetForm")}
-                      >
-                        Batal
-                      </button>
-                    </div>
-                  </div>
-                )}
                 {/* daftar alamat */}
-                {this.props.userGlobal.deliveryList.map((item) => {
-                  return (
-                    <div key={item.id}>
-                      <ListAddress
-                        userId={this.props.userGlobal.id}
-                        deliveryList={item}
-                      />
-                    </div>
-                  );
-                })}
+
+                <ListAddress />
               </div>
             </div>
           </div>
