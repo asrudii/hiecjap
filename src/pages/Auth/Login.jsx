@@ -45,7 +45,7 @@ class Login extends React.Component {
             <div className="mt-5 d-grid gap-4 col-8 mx-auto">
               {this.props.userGlobal.errMsg && (
                 <div
-                  class="alert alert-danger alert-dismissible fade show p-1 m-0"
+                  className="alert alert-danger alert-dismissible fade show p-1 m-0"
                   role="alert"
                 >
                   Gagal login
@@ -62,7 +62,7 @@ class Login extends React.Component {
                   name="email"
                   placeholder="masukkan email"
                   type="email"
-                  class="form-control"
+                  className="form-control"
                 />
               </div>
               <div className="formgroup ">
@@ -91,7 +91,7 @@ class Login extends React.Component {
                   name="password"
                   placeholder="masukkan password"
                   type={this.state.togglePsw ? "password" : "text"}
-                  class="form-control input-pwd"
+                  className="form-control input-pwd"
                 />
               </div>
               <button className="btn btn-primary" onClick={this.btnLogin}>

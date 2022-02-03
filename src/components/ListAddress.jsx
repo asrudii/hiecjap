@@ -241,6 +241,7 @@ class ListAddress extends React.Component {
         <div className="mt-3 d-flex justify-content-end">
           <button
             className="btn btn-primary"
+            data-bs-dismiss={this.props.manage ? "modal" : null}
             onClick={
               this.state.edit ? this.EditAddress : () => this.addAddress("new")
             }
@@ -266,7 +267,7 @@ class ListAddress extends React.Component {
         {this.props.manage ? (
           <button
             type="button"
-            class="btn btn-secondary my-3"
+            className="btn btn-secondary my-3"
             data-bs-toggle="modal"
             data-bs-target="#selectAddress"
             onClick={() => this.setState({ edit: false })}
@@ -289,7 +290,7 @@ class ListAddress extends React.Component {
               /* list address profile page */
             }
             return (
-              <div className="list-group">
+              <div className="list-group" key={item.id}>
                 <div
                   href="#"
                   className={`list-group-item list-group-item-action py-3 box-list ${
@@ -385,26 +386,26 @@ class ListAddress extends React.Component {
         })}
         {/* Modal */}
         <div
-          class="modal fade"
+          className="modal fade"
           id="selectAddress"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
-          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
+          <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
                   {this.state.edit ? "Edit" : "Tambah"} Alamat
                 </h5>
                 <button
                   type="button"
-                  class="btn-close"
+                  className="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                 ></button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 {/* daftar alamat */}
 
                 {this.renderFormAddress()}

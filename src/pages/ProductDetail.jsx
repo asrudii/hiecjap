@@ -135,6 +135,13 @@ class ProductDetail extends React.Component {
     }
   };
 
+  stringToIDR = (number) => {
+    return number.toLocaleString("id-ID", {
+      style: "currency",
+      currency: "IDR",
+    });
+  };
+
   render() {
     return (
       <div className="container-fluid page-style">
@@ -146,7 +153,11 @@ class ProductDetail extends React.Component {
             <div className="product-info">
               <h2>{this.state.dataProduct.productName}</h2>
               <p>{this.state.dataProduct.description}</p>
-              <span className="price">{this.state.dataProduct.price}</span>
+              <span className="price">
+                {this.state.dataProduct.price
+                  ? this.stringToIDR(this.state.dataProduct.price)
+                  : null}
+              </span>
             </div>
             <div>
               <div className="d-flex justify-content-start numb-cart my-4">

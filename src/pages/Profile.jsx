@@ -15,10 +15,10 @@ class Profile extends React.Component {
             <p>{this.props.userGlobal.userName}</p>
           </div>
           {/* Menu Profile */}
-          <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
+          <ul className="nav nav-tabs" id="myTab" role="tablist">
+            <li className="nav-item" role="presentation">
               <button
-                class="nav-link active"
+                className="nav-link active"
                 id="home-tab"
                 data-bs-toggle="tab"
                 data-bs-target="#home"
@@ -30,9 +30,9 @@ class Profile extends React.Component {
                 Data Profil
               </button>
             </li>
-            <li class="nav-item" role="presentation">
+            <li className="nav-item" role="presentation">
               <button
-                class="nav-link"
+                className="nav-link"
                 id="profile-tab"
                 data-bs-toggle="tab"
                 data-bs-target="#profile"
@@ -45,9 +45,9 @@ class Profile extends React.Component {
               </button>
             </li>
           </ul>
-          <div class="tab-content" id="myTabContent">
+          <div className="tab-content" id="myTabContent">
             <div
-              class="tab-pane fade show active py-4"
+              className="tab-pane fade show active py-4"
               id="home"
               role="tabpanel"
               aria-labelledby="home-tab"
@@ -66,7 +66,7 @@ class Profile extends React.Component {
               </div>
             </div>
             <div
-              class="tab-pane fade"
+              className="tab-pane fade"
               id="profile"
               role="tabpanel"
               aria-labelledby="profile-tab"

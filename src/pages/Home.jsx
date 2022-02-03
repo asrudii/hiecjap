@@ -57,7 +57,7 @@ class Home extends React.Component {
   }
 
   renderProduct = () => {
-    let rawData = this.state.filterProduct;
+    let rawData = [...this.state.filterProduct];
     // declare beginning index & last index for render product
     const beginningIndex = (this.state.pageActive - 1) * this.state.itemPerPage;
     const lastIndex = beginningIndex + this.state.itemPerPage;
@@ -94,7 +94,7 @@ class Home extends React.Component {
 
     const currentData = rawData.slice(beginningIndex, lastIndex);
     return currentData.map((item) => {
-      return <CardProduct data={item} />;
+      return <CardProduct data={item} key={item.id} />;
     });
   };
 
@@ -148,13 +148,13 @@ class Home extends React.Component {
         <div className="row d-flex justify-content-center">
           {/* side bar section */}
           <div className="col-2 my-3 ">
-            <div class="card mb-3">
-              <div class="card-header">Filter Product</div>
-              <div class="card-body d-grid gap-3">
+            <div className="card mb-3">
+              <div className="card-header">Filter Product</div>
+              <div className="card-body d-grid gap-3">
                 <div>
-                  <label for="product-name">Nama Produk</label>
+                  <label htmlFor="product-name">Nama Produk</label>
                   <input
-                    class="form-control"
+                    className="form-control"
                     type="text"
                     id="product-name"
                     placeholder="masukkan nama produk"
@@ -162,9 +162,9 @@ class Home extends React.Component {
                   />
                 </div>
                 <div>
-                  <label for="product-cath">Kategori Produk</label>
+                  <label htmlFor="product-cath">Kategori Produk</label>
                   <select
-                    class="form-control form-control"
+                    className="form-control form-control"
                     id="product-cath"
                     ref={(el) => (this.category = el)}
                   >
@@ -183,13 +183,13 @@ class Home extends React.Component {
                 </button>
               </div>
             </div>
-            <div class="card">
-              <div class="card-header">Sort Product</div>
-              <div class="card-body d-grid gap-3">
+            <div className="card">
+              <div className="card-header">Sort Product</div>
+              <div className="card-body d-grid gap-3">
                 <div>
-                  <label for="product-sort">Urutkan Berdasarkan</label>
+                  <label htmlFor="product-sort">Urutkan Berdasarkan</label>
                   <select
-                    class="form-control form-control"
+                    className="form-control form-control"
                     id="product-sort"
                     name="sortProduct"
                     onChange={this.inputHand}

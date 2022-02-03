@@ -18,37 +18,35 @@ class MyNav extends Component {
 
   render() {
     return (
-      <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top flex-column ">
-        <div class="container-fluid px-5 py-2">
-          <a class="navbar-brand" href="#">
-            <Link to="/">
-              <img src={require("../assets/img/logo.png")} height={50} />
-            </Link>
-          </a>
+      <nav className="navbar navbar-expand-lg navbar-light bg-white fixed-top flex-column ">
+        <div className="container-fluid px-5 py-2">
+          <Link to="/" className="navbar-brand">
+            <img src={require("../assets/img/logo.png")} height={50} />
+          </Link>
           <div
-            class="collapse navbar-collapse d-flex"
+            className="collapse navbar-collapse d-flex"
             id="navbarSupportedContent"
           >
             <div className="col-10 d-flex ">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0 m-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="/product/syar'i">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0 m-auto">
+                <li className="nav-item">
+                  <a className="nav-link" href="/product/syar'i">
                     HIJAB SYAR'I
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/product/polos">
+                <li className="nav-item">
+                  <a className="nav-link" href="/product/polos">
                     HIJAB POLOS
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/product/motif">
+                <li className="nav-item">
+                  <a className="nav-link" href="/product/motif">
                     HIJAB MOTIF
                   </a>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                   <a
-                    class="nav-link"
+                    className="nav-link"
                     aria-current="page"
                     href="/product/aksesoris"
                   >
@@ -58,11 +56,11 @@ class MyNav extends Component {
               </ul>
             </div>
             {this.props.userGlobal.id ? (
-              <div class="d-flex flex-row align-items-center justify-content-around col-2 nav-icon">
+              <div className="d-flex flex-row align-items-center justify-content-around col-2 nav-icon">
                 <div className="col-4">
                   <span>Hi, {this.props.userGlobal.userName}</span>
                 </div>
-                <div class="dropdown">
+                <div className="dropdown">
                   <FiUser
                     size={25}
                     id="dropdownMenuButton1"
@@ -70,38 +68,38 @@ class MyNav extends Component {
                     aria-expanded="false"
                   />
                   <ul
-                    class="dropdown-menu"
+                    className="dropdown-menu"
                     aria-labelledby="dropdownMenuButton1"
                   >
                     {this.props.userGlobal.role == "user" ? (
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <Link to="/history" className="dropdown-item">
                           Transaksi
-                        </a>
+                        </Link>
                       </li>
                     ) : null}
                     <li>
-                      <Link to="/profile" class="dropdown-item">
+                      <Link to="/profile" className="dropdown-item">
                         Profil
                       </Link>
                     </li>
                     {this.props.userGlobal.role == "admin" ? (
                       <li>
-                        <Link to="/admin" class="dropdown-item">
+                        <Link to="/admin" className="dropdown-item">
                           Admin
                         </Link>
                       </li>
                     ) : null}
                     <li>
-                      <hr class="dropdown-divider" />
+                      <hr className="dropdown-divider" />
                     </li>
                     <li>
                       <a
-                        class="dropdown-item"
+                        className="dropdown-item"
                         href="#"
                         onClick={this.props.logOut}
                       >
-                        LogOut
+                        Keluar
                       </a>
                     </li>
                   </ul>
@@ -122,7 +120,7 @@ class MyNav extends Component {
                 ) : null}
               </div>
             ) : (
-              <div class="d-flex flex-row align-items-center justify-content-end col-2 nav-icon">
+              <div className="d-flex flex-row align-items-center justify-content-end col-2 nav-icon">
                 <Link to="/login">Login</Link>
                 <Link to="/register">Register</Link>
               </div>

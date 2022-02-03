@@ -31,7 +31,7 @@
           "address": "Kp. Daya Mekar RT 02 RW 03 Desa Cikalong Kec. Cikalong Wetan Kab. Bandung Barat",
           "postalCode": "40556",
           "handphone": "0826618821",
-          "default": false
+          "default": true
         },
         {
           "id": 2,
@@ -39,7 +39,7 @@
           "address": "Kp. Daya Mekar RT 02 RW 03 Cikalong Cikalong Wetan",
           "postalCode": "40873",
           "handphone": "0862528821",
-          "default": true
+          "default": false
         },
         {
           "recipientName": "Roni 5",
@@ -76,6 +76,32 @@
         }
       ],
       "id": 3
+    },
+    {
+      "fullName": "Asep Rudi Luqmanul Hakim",
+      "userName": "asrud",
+      "email": "asep@mail.com",
+      "password": "12345",
+      "role": "user",
+      "deliveryList": [
+        {
+          "id": 1,
+          "recipientName": "Asep Rudi",
+          "address": "Kp. Daya Mekar RT 02 RW 03 Desa Cikalong Kec. Cikalong Wetan Kab. Bandung Barat",
+          "postalCode": "40556",
+          "handphone": "08123456464",
+          "default": false
+        },
+        {
+          "id": 2,
+          "recipientName": "Rudi",
+          "address": "Cimahi",
+          "postalCode": "53782",
+          "handphone": "02878622232",
+          "default": true
+        }
+      ],
+      "id": 4
     }
   ],
   "transactions": [
@@ -162,6 +188,330 @@
         }
       ],
       "id": 3
+    },
+    {
+      "userId": 4,
+      "address": "Kp. Daya Mekar RT 02 RW 03 Desa Cikalong Kec. Cikalong Wetan Kab. Bandung Barat",
+      "recipientName": "Asep Rudi",
+      "postalCode": "40556",
+      "handphone": "08123456464",
+      "totalPrice": 168000,
+      "totalPayment": 200000,
+      "transactionDate": "2 - 2 - 2022",
+      "transactionItems": [
+        {
+          "userId": 4,
+          "productId": 2,
+          "productName": "Hijab Hijau",
+          "price": 25000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog17_400x.jpg?v=1641532033",
+          "quantity": 1,
+          "id": 8
+        },
+        {
+          "userId": 4,
+          "productId": 1,
+          "productName": "Hijab Hijau Tua",
+          "price": 15000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog21_400x.jpg?v=1641531665",
+          "quantity": 1,
+          "id": 9
+        },
+        {
+          "userId": 4,
+          "productId": 12,
+          "productName": "Hijab Ungu Tua",
+          "price": 30000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/London-Bridge3_400x.jpg?v=1634809629",
+          "quantity": 1,
+          "id": 10
+        },
+        {
+          "userId": 4,
+          "productId": 16,
+          "productName": "Hijab Merah Motif Bunga",
+          "price": 45000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/11251_400x.jpg?v=1600334594",
+          "quantity": 2,
+          "id": 11
+        }
+      ],
+      "id": 4
+    },
+    {
+      "userId": 4,
+      "address": "Kp. Daya Mekar RT 02 RW 03 Desa Cikalong Kec. Cikalong Wetan Kab. Bandung Barat",
+      "recipientName": "Asep Rudi",
+      "postalCode": "40556",
+      "handphone": "08123456464",
+      "totalPrice": 126000,
+      "totalPayment": 130000,
+      "transactionDate": "3 - 2 - 2022",
+      "transactionItems": [
+        {
+          "userId": 4,
+          "productId": 1,
+          "productName": "Hijab Hijau Tua",
+          "price": 15000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog21_400x.jpg?v=1641531665",
+          "quantity": 1,
+          "id": 8
+        },
+        {
+          "userId": 4,
+          "productId": 2,
+          "productName": "Hijab Hijau",
+          "price": 25000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog17_400x.jpg?v=1641532033",
+          "quantity": 3,
+          "id": 9
+        },
+        {
+          "userId": 4,
+          "productId": 11,
+          "productName": "Hijab Merah",
+          "price": 30000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Cayenne-S23_400x.jpg?v=1640050407",
+          "quantity": 1,
+          "id": 10
+        }
+      ],
+      "id": 5
+    },
+    {
+      "userId": 4,
+      "address": "Kp. Daya Mekar RT 02 RW 03 Desa Cikalong Kec. Cikalong Wetan Kab. Bandung Barat",
+      "recipientName": "Asep Rudi",
+      "postalCode": "40556",
+      "handphone": "08123456464",
+      "totalPrice": 430500,
+      "totalPayment": 500000,
+      "transactionDate": "3 - 2 - 2022",
+      "transactionItems": [
+        {
+          "userId": 4,
+          "productId": 21,
+          "productName": "Ring Scraft",
+          "price": 235000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/WhatsAppImage2020-07-20at21.01.07_1_600x.jpg?v=1595296253",
+          "quantity": 1,
+          "id": 8
+        },
+        {
+          "userId": 4,
+          "productId": 22,
+          "productName": "Inner Bandana",
+          "price": 25000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/WhatsAppImage2020-04-18at08.53.14_600x.jpg?v=1587362158",
+          "quantity": 1,
+          "id": 9
+        },
+        {
+          "userId": 4,
+          "productId": 23,
+          "productName": "Hijab Coklat Gracilaria",
+          "price": 50000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/89_400x.jpg?v=1602920215",
+          "quantity": 3,
+          "id": 10
+        }
+      ],
+      "id": 6
+    },
+    {
+      "userId": 4,
+      "address": "Kp. Daya Mekar RT 02 RW 03 Desa Cikalong Kec. Cikalong Wetan Kab. Bandung Barat",
+      "recipientName": "Asep Rudi",
+      "postalCode": "40556",
+      "handphone": "08123456464",
+      "totalPrice": 225750,
+      "totalPayment": 300000,
+      "transactionDate": "3 - 2 - 2022",
+      "transactionItems": [
+        {
+          "userId": 4,
+          "productId": 17,
+          "productName": "Hijab Merah Motif Garis",
+          "price": 45000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/116_400x.jpg?v=1575858989",
+          "quantity": 1,
+          "id": 8
+        },
+        {
+          "userId": 4,
+          "productId": 16,
+          "productName": "Hijab Merah Motif Bunga",
+          "price": 45000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/11251_400x.jpg?v=1600334594",
+          "quantity": 2,
+          "id": 9
+        },
+        {
+          "userId": 4,
+          "productId": 12,
+          "productName": "Hijab Merah Tua",
+          "price": 40000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Barn-red4_400x.jpg?v=1641789163",
+          "quantity": 1,
+          "id": 10
+        },
+        {
+          "userId": 4,
+          "productId": 14,
+          "productName": "Hijab Kuning Motif Daun Gradasi",
+          "price": 40000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/11258_400x.jpg?v=1600502870",
+          "quantity": 1,
+          "id": 11
+        }
+      ],
+      "id": 7
+    },
+    {
+      "userId": 4,
+      "address": "Kp. Daya Mekar RT 02 RW 03 Desa Cikalong Kec. Cikalong Wetan Kab. Bandung Barat",
+      "recipientName": "Asep Rudi",
+      "postalCode": "40556",
+      "handphone": "08123456464",
+      "totalPrice": 26250,
+      "totalPayment": 30000,
+      "transactionDate": "3 - 2 - 2022",
+      "transactionItems": [
+        {
+          "userId": 4,
+          "productId": 22,
+          "productName": "Inner Bandana",
+          "price": 25000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/WhatsAppImage2020-04-18at08.53.14_600x.jpg?v=1587362158",
+          "quantity": 1,
+          "id": 8
+        }
+      ],
+      "id": 8
+    },
+    {
+      "userId": 4,
+      "address": "Kp. Daya Mekar RT 02 RW 03 Desa Cikalong Kec. Cikalong Wetan Kab. Bandung Barat",
+      "recipientName": "Asep Rudi",
+      "postalCode": "40556",
+      "handphone": "08123456464",
+      "totalPrice": 493500,
+      "totalPayment": 500000,
+      "transactionDate": "3 - 2 - 2022",
+      "transactionItems": [
+        {
+          "userId": 4,
+          "productId": 21,
+          "productName": "Ring Scraft",
+          "price": 235000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/WhatsAppImage2020-07-20at21.01.07_1_600x.jpg?v=1595296253",
+          "quantity": 2,
+          "id": 8
+        }
+      ],
+      "id": 9
+    },
+    {
+      "userId": 4,
+      "address": "Kp. Daya Mekar RT 02 RW 03 Desa Cikalong Kec. Cikalong Wetan Kab. Bandung Barat",
+      "recipientName": "Asep Rudi",
+      "postalCode": "40556",
+      "handphone": "08123456464",
+      "totalPrice": 105000,
+      "totalPayment": 120000,
+      "transactionDate": "3 - 2 - 2022",
+      "transactionItems": [
+        {
+          "userId": 4,
+          "productId": 23,
+          "productName": "Hijab Coklat Gracilaria",
+          "price": 50000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/89_400x.jpg?v=1602920215",
+          "quantity": 2,
+          "id": 8
+        }
+      ],
+      "id": 10
+    },
+    {
+      "userId": 4,
+      "address": "Kp. Daya Mekar RT 02 RW 03 Desa Cikalong Kec. Cikalong Wetan Kab. Bandung Barat",
+      "recipientName": "Asep Rudi",
+      "postalCode": "40556",
+      "handphone": "08123456464",
+      "totalPrice": 325500,
+      "totalPayment": 400000,
+      "transactionDate": "3 - 2 - 2022",
+      "transactionItems": [
+        {
+          "userId": 4,
+          "productId": 21,
+          "productName": "Ring Scraft",
+          "price": 235000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/WhatsAppImage2020-07-20at21.01.07_1_600x.jpg?v=1595296253",
+          "quantity": 1,
+          "id": 8
+        },
+        {
+          "userId": 4,
+          "productId": 22,
+          "productName": "Inner Bandana",
+          "price": 25000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/WhatsAppImage2020-04-18at08.53.14_600x.jpg?v=1587362158",
+          "quantity": 1,
+          "id": 9
+        },
+        {
+          "userId": 4,
+          "productId": 23,
+          "productName": "Hijab Coklat Gracilaria",
+          "price": 50000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/89_400x.jpg?v=1602920215",
+          "quantity": 1,
+          "id": 10
+        }
+      ],
+      "id": 11
+    },
+    {
+      "userId": 4,
+      "address": "Kp. Daya Mekar RT 02 RW 03 Desa Cikalong Kec. Cikalong Wetan Kab. Bandung Barat",
+      "recipientName": "Asep Rudi",
+      "postalCode": "40556",
+      "handphone": "08123456464",
+      "totalPrice": 99750,
+      "totalPayment": 100000,
+      "transactionDate": "3 - 2 - 2022",
+      "transactionItems": [
+        {
+          "userId": 4,
+          "productId": 6,
+          "productName": "Hijab Abu Muda",
+          "price": 15000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog3_400x.jpg?v=1641531385",
+          "quantity": 1,
+          "id": 8
+        },
+        {
+          "userId": 4,
+          "productId": 5,
+          "productName": "Hijab Kuning Muda",
+          "price": 20000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog9_400x.jpg?v=1641531419",
+          "quantity": 1,
+          "id": 9
+        },
+        {
+          "userId": 4,
+          "productId": 10,
+          "productName": "Hijab Oren",
+          "price": 30000,
+          "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Dessert-Sun3_400x.jpg?v=1634869429",
+          "quantity": 2,
+          "id": 10
+        }
+      ],
+      "id": 12
     }
   ],
   "products": [
@@ -348,6 +698,14 @@
       "description": "Kain terbuat dari sutra dengan berbagai macam ukuran",
       "category": "aksesoris",
       "id": 22
+    },
+    {
+      "productName": "Hijab Coklat Gracilaria",
+      "price": 50000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/89_400x.jpg?v=1602920215",
+      "description": "Hijab mantap",
+      "category": "motif",
+      "id": 23
     }
   ],
   "carts": [
@@ -359,6 +717,15 @@
       "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Dessert-Sun3_400x.jpg?v=1634869429",
       "quantity": 1,
       "id": 7
+    },
+    {
+      "userId": 4,
+      "productId": 1,
+      "productName": "Hijab Hijau Tua",
+      "price": 15000,
+      "productImage": "https://cdn.shopify.com/s/files/1/0258/4425/2757/products/Lemonade-Katalog21_400x.jpg?v=1641531665",
+      "quantity": 5,
+      "id": 8
     }
   ],
   "courier": [

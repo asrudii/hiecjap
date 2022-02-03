@@ -1,0 +1,11 @@
+.btn-pagi {
+  cursor: pointer;
+  min-width: 15px;
+  text-align: center;
+}
+
+.btn-pagi-act {
+  color: rgb(70, 155, 1);
+  font-weight: 600;
+  border-bottom: 2px solid rgb(70, 155, 1);
+}

@@ -90,81 +90,90 @@ class Cart extends React.Component {
   };
 
   payment = () => {
-    if (this.state.pay < this.rendTotal()) {
-      Swal.fire({
-        title: "Error!",
-        text: "Uang kamu kurang dari total transaksi",
-        icon: "error",
-        confirmButtonText: "Close",
-      });
-      return;
-    }
-
-    if (this.state.pay > this.rendTotal()) {
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: `uang kembalian kamu ${this.state.pay - this.rendTotal()}`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    } else if (this.state.pay == this.rendTotal()) {
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "uang kamu pass",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    }
-
-    let date = new Date();
-    let addressData = this.props.userGlobal.deliveryList.filter((item) => {
-      return item.default;
-    });
-    let { recipientName, address, postalCode, handphone } = addressData[0];
-
-    if (recipientName && address && postalCode && handphone) {
-      Axios.post(`${API_URL}/transactions`, {
-        userId: this.props.userGlobal.id,
-        address,
-        recipientName,
-        postalCode,
-        handphone,
-        totalPrice: parseInt(this.rendTotal()),
-        totalPayment: parseInt(this.state.pay),
-        transactionDate: `${date.getDate()} - ${
-          date.getMonth() + 1
-        } - ${date.getFullYear()}`,
-        transactionItems: this.props.cartGlobal.cartData,
-      })
-        .then((res) => {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "berhasil checout",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          res.data.transactionItems.forEach((val) => {
-            this.deleteCart(val.id, "pay");
-          });
-          this.setState({
-            redirect: true,
-          });
-        })
-        .catch((err) => {
-          Swal.fire({
-            title: "Error!",
-            text: "Gagal checkout",
-            icon: "error",
-            confirmButtonText: "Close",
-          });
+    if (this.props.cartGlobal.cartData.length) {
+      if (this.state.pay < this.rendTotal()) {
+        Swal.fire({
+          title: "Error!",
+          text: "Uang kamu kurang dari total transaksi",
+          icon: "error",
+          confirmButtonText: "Close",
         });
+        return;
+      }
+
+      if (this.state.pay > this.rendTotal()) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `uang kembalian kamu ${this.state.pay - this.rendTotal()}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } else if (this.state.pay == this.rendTotal()) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "uang kamu pass",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+
+      let date = new Date();
+      let addressData = this.props.userGlobal.deliveryList.filter((item) => {
+        return item.default;
+      });
+      let { recipientName, address, postalCode, handphone } = addressData[0];
+
+      if (recipientName && address && postalCode && handphone) {
+        Axios.post(`${API_URL}/transactions`, {
+          userId: this.props.userGlobal.id,
+          address,
+          recipientName,
+          postalCode,
+          handphone,
+          totalPrice: parseInt(this.rendTotal()),
+          totalPayment: parseInt(this.state.pay),
+          transactionDate: `${date.getDate()} - ${
+            date.getMonth() + 1
+          } - ${date.getFullYear()}`,
+          transactionItems: this.props.cartGlobal.cartData,
+        })
+          .then((res) => {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "berhasil checout",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            res.data.transactionItems.forEach((val) => {
+              this.deleteCart(val.id, "pay");
+            });
+            this.setState({
+              redirect: true,
+            });
+          })
+          .catch((err) => {
+            Swal.fire({
+              title: "Error!",
+              text: "Gagal checkout",
+              icon: "error",
+              confirmButtonText: "Close",
+            });
+          });
+      } else {
+        Swal.fire({
+          title: "Error!",
+          text: "Mohon isi alamat terlebih dahulu",
+          icon: "error",
+          confirmButtonText: "Close",
+        });
+      }
     } else {
       Swal.fire({
         title: "Error!",
-        text: "Mohon isi alamat terlebih dahulu",
+        text: "Cart kamu kosong",
         icon: "error",
         confirmButtonText: "Close",
       });
@@ -298,13 +307,13 @@ class Cart extends React.Component {
     if (this.props.cartGlobal.cartData.length) {
       return this.props.cartGlobal.cartData.map((item) => {
         return (
-          <div class="d-flex card-custom" key={item.id}>
+          <div className="d-flex card-custom" key={item.id}>
             <img
-              class="card-img"
+              className="card-img"
               src={item.productImage}
               alt="Card image cap"
             />
-            <div class="card-body d-flex flex-column justify-content-between ">
+            <div className="card-body d-flex flex-column justify-content-between ">
               <div>
                 <h6 className="prod-name-cart">{item.productName}</h6>
 
@@ -383,7 +392,7 @@ class Cart extends React.Component {
               {/* get modal */}
               <button
                 type="button"
-                class="btn btn-secondary btn-lg my-3"
+                className="btn btn-secondary btn-lg my-3"
                 data-bs-toggle="modal"
                 data-bs-target="#selectAddress"
               >
@@ -410,26 +419,26 @@ class Cart extends React.Component {
         </div>
         {/* Modal */}
         <div
-          class="modal fade"
+          className="modal fade"
           id="selectAddress"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
-          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
+          <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
                   Pilih / Tambah Alamat
                 </h5>
                 <button
                   type="button"
-                  class="btn-close"
+                  className="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                 ></button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 {/* daftar alamat */}
 
                 <ListAddress />

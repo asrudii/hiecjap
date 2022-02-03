@@ -11,6 +11,7 @@ import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import Admin from "./pages/Admin";
 import Profile from "./pages/Profile";
+import History from "./pages/History";
 import { keepLoginUser, checkStorage } from "./redux/actions/user";
 import { getCart } from "./redux/actions/cart";
 import { connect } from "react-redux";
@@ -39,6 +40,7 @@ class App extends React.Component {
           <Route component={Cart} path="/cart" />
           <Route component={Admin} path="/admin" />
           <Route component={Profile} path="/profile" />
+          <Route component={History} path="/history" />
           <Route component={ProductDetail} path="/product-detail/:id" />
         </Switch>
       </BrowserRouter>

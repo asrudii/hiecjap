@@ -75,7 +75,7 @@ class Register extends React.Component {
             <div className="mt-5 d-grid gap-4 col-8 mx-auto">
               {this.props.userGlobal.errMsg && (
                 <div
-                  class="alert alert-danger alert-dismissible fade show p-1 m-0"
+                  className="alert alert-danger alert-dismissible fade show p-1 m-0"
                   role="alert"
                 >
                   {this.props.userGlobal.errMsg}
@@ -92,7 +92,7 @@ class Register extends React.Component {
                   placeholder="masukkan nama lengkap"
                   name="fullName"
                   type="text"
-                  class="form-control"
+                  className="form-control"
                 />
               </div>
               <div className="formgroup ">
@@ -106,7 +106,7 @@ class Register extends React.Component {
                   placeholder="masukkan username"
                   name="userName"
                   type="text"
-                  class="form-control"
+                  className="form-control"
                 />
               </div>
               <div className="formgroup ">
@@ -120,7 +120,7 @@ class Register extends React.Component {
                   placeholder="masukkan email"
                   name="email"
                   type="email"
-                  class="form-control"
+                  className="form-control"
                 />
               </div>
               <div className="formgroup ">
@@ -149,7 +149,7 @@ class Register extends React.Component {
                   placeholder="masukkan password"
                   name="password"
                   type={this.state.togglePsw ? "password" : "text"}
-                  class="form-control input-pwd"
+                  className="form-control input-pwd"
                 />
               </div>
               <button className="btn btn-primary" onClick={this.handReg}>

@@ -196,6 +196,27 @@ class Admin extends React.Component {
     }
   };
 
+  pagiNumber = () => {
+    let numbPage = [];
+    for (let i = 1; i <= this.state.maxPage; i++) {
+      numbPage.push(
+        <span
+          className={`btn-pagi ${
+            this.state.pageActive === i ? "btn-pagi-act" : null
+          }`}
+          onClick={() =>
+            this.setState({
+              pageActive: i,
+            })
+          }
+        >
+          {i}
+        </span>
+      );
+    }
+    return numbPage;
+  };
+
   searchProduct = (e) => {
     let productName = this.productName.value;
     let category = this.category.value;
@@ -218,7 +239,8 @@ class Admin extends React.Component {
   };
 
   renderProducts = () => {
-    let rawData = this.state.filterProduct;
+    let rawData = [...this.state.filterProduct];
+
     // declare beginning index & last index for render product
     const beginningIndex = (this.state.pageActive - 1) * this.state.itemPerPage;
     const lastIndex = beginningIndex + this.state.itemPerPage;
@@ -255,11 +277,12 @@ class Admin extends React.Component {
 
     const currentData = rawData.slice(beginningIndex, lastIndex);
 
-    return currentData.map((val) => {
+    return currentData.map((val, index) => {
+      let i = index + 1;
       if (val.id === this.state.editId) {
         return (
-          <tr>
-            <td>{val.id}</td>
+          <tr key={index}>
+            <td>{i}</td>
             <td>
               <input
                 value={this.state.editProductImage}
@@ -303,9 +326,10 @@ class Admin extends React.Component {
                 name="editCategory"
                 className="form-control"
               >
-                <option value="">All Items</option>
-                <option value="kaos">Kaos</option>
-                <option value="celana">Celana</option>
+                <option value="">Pilih Kategori</option>
+                <option value="syar'i">Syar'i</option>
+                <option value="polos">Polos</option>
+                <option value="motif">Motif</option>
                 <option value="aksesoris">Aksesoris</option>
               </select>
             </td>
@@ -325,8 +349,8 @@ class Admin extends React.Component {
         );
       }
       return (
-        <tr>
-          <td>{val.id}</td>
+        <tr key={index}>
+          <td>{i}</td>
           <td>
             <img
               className="admin-product-image"
@@ -373,12 +397,12 @@ class Admin extends React.Component {
               <div className="col-10 d-flex">
                 <div className="d-flex align-items-center me-5">
                   <div className="me-2">
-                    <label for="product-sort">
+                    <label htmlFor="product-sort">
                       <FiFilter size={24} />
                     </label>
                   </div>
                   <select
-                    class="form-control form-control"
+                    className="form-control form-control"
                     id="product-sort"
                     name="sortProduct"
                     onChange={this.inputHandler}
@@ -392,27 +416,27 @@ class Admin extends React.Component {
                 </div>
                 <div className="d-flex align-items-center me-5">
                   <div className="me-2">
-                    <label for="product-name">
+                    <label htmlFor="product-name">
                       <FiSliders size={24} />
                     </label>
                   </div>
                   <input
-                    class="form-control me-3"
+                    className="form-control me-3"
                     type="text"
                     id="product-name"
                     placeholder="Nama produk"
                     ref={(el) => (this.productName = el)}
                   />
                   <select
-                    class="form-control me-3"
+                    className="form-control me-3"
                     id="product-cath"
                     ref={(el) => (this.category = el)}
                   >
-                    <option>Pilih Kategori</option>
-                    <option>Syar'i</option>
-                    <option>Polos</option>
-                    <option>Motif</option>
-                    <option>Aksesoris</option>
+                    <option value="">Pilih Kategori</option>
+                    <option value="syar'i">Syar'i</option>
+                    <option value="polos">Polos</option>
+                    <option value="motif">Motif</option>
+                    <option value="aksesoris">Aksesoris</option>
                   </select>
                   <button
                     className="btn btn-primary"
@@ -449,7 +473,7 @@ class Admin extends React.Component {
             </table>
             {/* pagination  */}
             <div className="row d-flex justify-content-end">
-              <div className="col-2 d-flex justify-content-around">
+              <div className="col-2 d-flex justify-content-around align-items-center">
                 <button
                   disabled={this.state.pageActive === 1}
                   className="btn btn-secondary"
@@ -457,9 +481,7 @@ class Admin extends React.Component {
                 >
                   Prev
                 </button>
-                <span>
-                  {this.state.pageActive} of {this.state.maxPage}
-                </span>
+                {this.pagiNumber()}
                 <button
                   disabled={this.state.pageActive === this.state.maxPage}
                   className="btn btn-secondary"
@@ -472,26 +494,26 @@ class Admin extends React.Component {
 
             {/* Modal */}
             <div
-              class="modal fade"
+              className="modal fade"
               id="selectAddress"
               tabindex="-1"
               aria-labelledby="exampleModalLabel"
               aria-hidden="true"
             >
-              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
+              <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title" id="exampleModalLabel">
                       Tambah Produk
                     </h5>
                     <button
                       type="button"
-                      class="btn-close"
+                      className="btn-close"
                       data-bs-dismiss="modal"
                       aria-label="Close"
                     ></button>
                   </div>
-                  <div class="modal-body">
+                  <div className="modal-body">
                     {/* Form */}
                     <label htmlFor="addProductName">Nama Produk</label>
                     <input
@@ -536,10 +558,11 @@ class Admin extends React.Component {
                       id="addCategory"
                       className="form-control mb-2"
                     >
-                      <option value="">All Items</option>
-                      <option value="kaos">Kaos</option>
-                      <option value="celana">Celana</option>
-                      <option value="aksesoris">Aksesoris</option>
+                      <option>Pilih Kategori</option>
+                      <option>Syar'i</option>
+                      <option>Polos</option>
+                      <option>Motif</option>
+                      <option>Aksesoris</option>
                     </select>
                     <button
                       data-bs-dismiss="modal"
@@ -547,7 +570,7 @@ class Admin extends React.Component {
                       onClick={this.addNewProduct}
                       className="btn btn-primary"
                     >
-                      Tambah Produk
+                      Simpan
                     </button>
                   </div>
                 </div>
